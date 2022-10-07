@@ -1,5 +1,3 @@
-:no_entry: [DEPRECATED] Active at https://github.com/genesiscommunitysuccess/blank-app-seed
-
 # alpha
 
 Skeleton project for Genesis Application. This project has been created from the Genesis Blank Application Seed. Our seeds allow users to quickly bootstrap
