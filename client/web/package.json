@@ -5,7 +5,7 @@
   "private": true,
   "license": "Apache-2.0",
   "config": {
-    "API_HOST": "ws://localhost/gwf/",
+    "API_HOST": "ws://localhost:8080/gwf",
     "DEFAULT_USER": "JaneDee",
     "DEFAULT_PASSWORD": "beONneON*74",
     "PORT": 6060
@@ -63,19 +63,16 @@
     "@genesislcap/foundation-entity-management": "^5.0.0",
     "@genesislcap/foundation-header": "^5.0.0",
     "@genesislcap/foundation-login": "^5.0.0",
+    "@genesislcap/foundation-ui": "^5.0.0",
     "@genesislcap/foundation-utils": "^5.0.0",
     "@genesislcap/foundation-zero": "^5.0.0",
     "@genesislcap/foundation-zero-grid-pro": "^5.0.0",
-    "@genesislcap/grid-pro": "^5.0.0",
     "@microsoft/fast-components": "^2.21.6",
     "@microsoft/fast-element": "^1.7.0",
     "@microsoft/fast-foundation": "^2.33.4",
     "@microsoft/fast-router": "^0.4.2",
     "@microsoft/fast-web-utilities": "^5.1.0",
     "rxjs": "^7.5.4",
-    "tslib": "^2.3.1",
-    "@ag-grid-community/client-side-row-model": "^27.0.0",
-    "@ag-grid-community/csv-export": "^27.0.0"
-
+    "tslib": "^2.3.1"
   }
 }
