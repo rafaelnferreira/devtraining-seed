@@ -24,7 +24,7 @@ RUN /usr/bin/ssh-keygen -A
 FROM base as copy-distributions
 
 WORKDIR /home/alpha/run/
-COPY ./build/dependencies/genesisproduct*.zip ./build/dependencies/genesis-distribution*.zip ./build/dependencies/alpha-site-specific*.zip ./build/dependencies/auth-distribution-*.zip ./
+COPY ./alpha-distribution/build/distributions/genesisproduct*.zip ./build/dependencies/genesis-distribution*.zip ./alpha-site-specific/build/distributions/alpha-site-specific*.zip ./build/dependencies/auth-distribution-*.zip ./
 RUN unzip \*.zip &&\
     rm *.zip &&\
     chown -hR alpha:alpha ../run/
