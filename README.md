@@ -1,21 +1,19 @@
-# devtraining-seed
+# alpha
 
-Skeleton project for Genesis Application. This project has been created from the [Genesis Blank Application Seed](https://github.com/genesiscommunitysuccess/blank-app-seed). Our seeds allow users to quickly bootstrap
-their projects. Each seed adheres to strict Genesis best practices, and has passed numerous performance, compliance and accessibility checks. 
+Skeleton project for Genesis Application. This project has been created from the Genesis Blank Application Seed. Our seeds allow users to quickly bootstrap
+their projects. Each seed adheres to strict Genesis best practices, and has passed numerous performance, compliance and
+accessibility checks. 
 
 # Introduction
 
-This seed supports the start of the developer training available [here](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/).
-
 ## Next Steps
 
-Go to the [training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/) and start the theory and practice.
+As next steps to have a simple application running check the [Quick Start](https://docs.genesis.global/secure/getting-started/quick-start/) guide.
 
-At any moment feel free to browse our [documentation website](https://docs.genesis.global/) to learn more.
+If you are looking for advanced modules and how to use them head to [Go To The Next Level](https://docs.genesis.global/secure/getting-started/go-to-the-next-level/introduction/)
 
 If you need an introduction to the Genesis platform and its modules it's worth heading [here](https://docs.genesis.global/secure/getting-started/learn-the-basics/simple-introduction/).
 
-Enjoy!
 
 ## Project Structure
 

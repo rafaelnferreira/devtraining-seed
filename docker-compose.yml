@@ -20,7 +20,7 @@ services:
       - '5432:5432'
   nginx-proxy:
     ports:
-      - '80:80'
+      - '8080:80'
       - '443:443'
     container_name: nginx
     build:
