@@ -28,18 +28,18 @@ services:
       dockerfile: Dockerfile
     networks:
       - qs_network
-  frontend:
-    container_name: frontend
-    build:
-      context: client/
-      dockerfile: Dockerfile
-    volumes:
-      - ./client/web:/app/web
-    ports:
-      - '6060:6060'
-    entrypoint: [ "/bin/bash" , "-c", "npm run dev:docker && tail -f /dev/null" ]
-    networks:
-      - qs_network
+  # frontend:
+  #   container_name: frontend
+  #   build:
+  #     context: client/
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./client/web:/app/web
+  #   ports:
+  #     - '6060:6060'
+  #   entrypoint: [ "/bin/bash" , "-c", "npm run dev:docker && tail -f /dev/null" ]
+  #   networks:
+  #     - qs_network
 networks:
   qs_network:
     driver: bridge
