@@ -31,9 +31,7 @@ distributions {
 
                 exclude("genesis-*.jar")
                 exclude("alpha-*.jar")
-                exclude("genesis-*.zip")
-                exclude("genesisproduct-*.zip")
-                exclude("auth-*.zip")
+                exclude("*.zip")
 
                 fileMode = libPermissions
             }

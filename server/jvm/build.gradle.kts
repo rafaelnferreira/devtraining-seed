@@ -23,7 +23,7 @@ subprojects  {
     tasks {
         withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
-                freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=enable")
+                freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=all")
             }
         }
         val java = "11"
