@@ -1,14 +1,16 @@
 # devtraining-seed
 
-Skeleton project for Genesis Application. This project has been created from the Genesis Blank Application Seed. Our seeds allow users to quickly bootstrap
-their projects. Each seed adheres to strict Genesis best practices, and has passed numerous performance, compliance and
-accessibility checks. 
+Blank project for Genesis Application to support [developer training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/). If you want to see the complete application built during the training use this [repo](https://github.com/genesiscommunitysuccess/devtraining-alpha) as a reference.
 
 # Introduction
 
-## Next Steps
+## Next step
 
-As next steps to have a simple application running check the [Quick Start](https://docs.genesis.global/secure/getting-started/quick-start/) guide.
+Go to the developer training and follow the (agenda)[https://docs.genesis.global/secure/getting-started/developer-training/training-intro/#programme]. There are 5 sessions or days; each session covers specific resources of the platform to build a Trade & Positions application from the very beginning.
+
+## Further information
+
+If you are looking for a simple application running check the [Quick Start](https://docs.genesis.global/secure/getting-started/quick-start/) guide.
 
 If you are looking for advanced modules and how to use them head to [Go To The Next Level](https://docs.genesis.global/secure/getting-started/go-to-the-next-level/introduction/)
 
