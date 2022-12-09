@@ -1,6 +1,6 @@
 # devtraining-seed
 
-Blank project for Genesis Application to support [developer training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/). If you want to see the complete application built during the training use this [repo](https://github.com/genesiscommunitysuccess/devtraining-alpha) as a reference.
+Initial project for Genesis Application to support [developer training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/). If you want to see the complete application built during the training use this [repo](https://github.com/genesiscommunitysuccess/devtraining-alpha) as a reference.
 
 # Introduction
 
