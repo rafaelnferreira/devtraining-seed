@@ -1,4 +1,4 @@
-# alpha
+# devtraining-seed
 
 Skeleton project for Genesis Application. This project has been created from the Genesis Blank Application Seed. Our seeds allow users to quickly bootstrap
 their projects. Each seed adheres to strict Genesis best practices, and has passed numerous performance, compliance and
