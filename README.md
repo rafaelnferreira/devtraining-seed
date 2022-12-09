@@ -4,7 +4,7 @@ Initial project for Genesis Application to support [developer training](https://
 
 # Introduction
 
-## Next step
+## Start the training
 
 Go to the developer training and follow the [agenda](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/#programme). There are 5 sessions or days; each session covers specific resources of the platform to build a Trade & Positions application from the very beginning.
 
