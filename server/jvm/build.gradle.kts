@@ -23,7 +23,7 @@ subprojects  {
     tasks {
         withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
-                freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=all")
+                freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=enable")
             }
         }
         val java = "11"
@@ -31,6 +31,13 @@ subprojects  {
         compileKotlin {
             kotlinOptions { jvmTarget = java }
         }
+
+        //testing should use H2 mem db
+        test {
+            systemProperty("DbLayer", "SQL")
+            systemProperty("DbHost", "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1")
+            systemProperty("DbQuotedIdentifiers", "true")
+        }        
     }
 }
 
