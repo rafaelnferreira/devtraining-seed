@@ -77,6 +77,9 @@ allprojects {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
         }
     }
+    tasks.withType<Jar> {
+        duplicatesStrategy = DuplicatesStrategy.WARN
+    }
 
     java {
         toolchain {
