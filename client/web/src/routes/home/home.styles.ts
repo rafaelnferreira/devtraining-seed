@@ -3,6 +3,7 @@ import { mixinScreen } from '../../styles';
 
 export const HomeStyles = css`
   :host {
+    ${mixinScreen('flex')}
     align-items: center;
     justify-content: center;
     flex-direction: column;
