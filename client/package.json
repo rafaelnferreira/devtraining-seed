@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "baseline": "npm run clean && npm run clean:dist && npm run bootstrap:ignore-scripts && npm run copy-files:all",
-    "bootstrap": "npm run husky:install && npx lerna bootstrap --hoist",
+    "bootstrap": "npm run husky:install && npx lerna@^4.0.0 bootstrap --hoist",
     "bootstrap:ignore-scripts": "npm run bootstrap -- --ignore-scripts",
     "clean": "npx lerna clean -y",
     "clean:all": "npm run clean && npm run clean:dist && npm run clean:hoisted",
