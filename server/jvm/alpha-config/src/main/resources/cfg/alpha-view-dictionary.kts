@@ -30,6 +30,15 @@ views {
             INSTRUMENT.INSTRUMENT_NAME
             INSTRUMENT.MARKET_ID withPrefix "SYMBOL"
             INSTRUMENT.CURRENCY_ID withAlias "CURRENCY"
+
+            derivedField("CONSIDERATION", DOUBLE) {
+                withInput(TRADE.QUANTITY, TRADE.PRICE) { qty, price -> qty * price }
+            }
+
+            derivedField("ASSET_CLASSX", STRING) {
+                withInput(INSTRUMENT.ASSET_CLASS) { assetClass -> assetClass?.ifBlank { "UNKNOWN" } }
+            }
+
         }
 
     }
