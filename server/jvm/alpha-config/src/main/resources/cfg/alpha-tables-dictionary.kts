@@ -11,4 +11,42 @@
 
 tables {
 
+    table (name = "TRADE", id = 2000) {
+        sequence(TRADE_ID, "TR")
+        QUANTITY
+        PRICE not null
+        SYMBOL
+        DIRECTION
+        COUNTERPARTY_ID
+        INSTRUMENT_ID
+
+        primaryKey {
+            TRADE_ID
+        }
+    }
+
+    table (name = "COUNTERPARTY", id = 2002) {
+        sequence(COUNTERPARTY_ID, "CP")
+        COUNTERPARTY_NAME
+        ENABLED
+        COUNTERPARTY_LEI
+
+        primaryKey {
+            COUNTERPARTY_ID
+        }
+    }
+
+    table (name = "INSTRUMENT", id = 2001) {
+        sequence(INSTRUMENT_ID, "IN")
+        INSTRUMENT_NAME
+        MARKET_ID
+        COUNTRY_CODE
+        CURRENCY_ID
+        ASSET_CLASS
+
+        primaryKey {
+            INSTRUMENT_ID
+        }
+    }
+
 }

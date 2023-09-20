@@ -11,5 +11,6 @@
 !
 -->
 <configuration>
-    
+    <service host="localhost" name="ALPHA_DATASERVER" port="11000"/>
+    <service host="localhost" name="ALPHA_EVENT_HANDLER" port="11001"/>
 </configuration>

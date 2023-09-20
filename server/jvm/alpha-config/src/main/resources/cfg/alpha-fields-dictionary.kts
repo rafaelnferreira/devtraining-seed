@@ -11,4 +11,25 @@
 
 fields {
 
+    // trade
+
+    field("TRADE_ID", type = STRING)
+    field("QUANTITY", type = INT)
+    field("PRICE", type = DOUBLE)
+    field("SYMBOL", type = STRING)
+    field("DIRECTION", type = ENUM("BUY", "SELL", default = "BUY"))
+
+    // counterparty
+    field("COUNTERPARTY_ID", type = STRING)
+    field("COUNTERPARTY_NAME", type = STRING)
+    field("ENABLED", type = BOOLEAN)
+    field("COUNTERPARTY_LEI", type = STRING)
+
+    // instrument
+    field("INSTRUMENT_ID", type = STRING)
+    field("INSTRUMENT_NAME", type = STRING)
+    field("MARKET_ID", type = STRING)
+    field("COUNTRY_CODE", type = STRING)
+    field("CURRENCY_ID", type = STRING)
+    field("ASSET_CLASS", type = STRING)
 }
