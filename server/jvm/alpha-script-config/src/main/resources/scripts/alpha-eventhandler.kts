@@ -24,6 +24,28 @@ eventHandler {
         }
     }
 
+    eventHandler<Trade>(name = "TRADE_MODIFY") {
+        schemaValidation = false
+        onValidate {
+            val entity = entityDb.get(it.details)
+            require(entity != null ) { "Trade must exist to be modified"}
+            ack()
+        }
+        onCommit { event ->
+            entityDb.modify(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Trade>(name = "TRADE_DELETE") {
+        schemaValidation = false
+
+        onCommit { event ->
+            entityDb.delete(event.details)
+            ack()
+        }
+    }
+
     eventHandler<Counterparty>(name = "COUNTERPARTY_INSERT") {
         schemaValidation = false
         onCommit { event ->

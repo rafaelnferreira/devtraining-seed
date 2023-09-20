@@ -19,6 +19,11 @@ const COLUMNS = [
     headerName: 'Id',
   },
   {
+      ...defaultColumnConfig,
+      field: 'COUNTERPARTY_NAME',
+      headerName: 'Counterparty',
+  },
+  {
     ...defaultColumnConfig,
     field: 'QUANTITY',
     headerName: 'Quantity',
@@ -29,14 +34,39 @@ const COLUMNS = [
     headerName: 'Price',
   },
   {
+      ...defaultColumnConfig,
+      field: 'INSTRUMENT_NAME',
+      headerName: 'Instrument Name',
+    },
+  {
     ...defaultColumnConfig,
     field: 'SYMBOL',
     headerName: 'Symbol',
   },
   {
+      ...defaultColumnConfig,
+      field: 'CURRENCY',
+      headerName: 'Currency',
+  },
+  {
     ...defaultColumnConfig,
     field: 'DIRECTION',
     headerName: 'Direction',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_DATE',
+    headerName: 'Trade Date',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'ENTERED_BY',
+    headerName: 'Entered By',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_STATUS',
+    headerName: 'Status',
   },
 ];
 

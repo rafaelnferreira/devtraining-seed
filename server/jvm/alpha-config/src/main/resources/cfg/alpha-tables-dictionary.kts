@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.analysis.decompiler.stub.flags.VALUE_CLASS
+
 /**
  * System              : Genesis Business Library
  * Sub-System          : multi-pro-code-test Configuration
@@ -19,6 +21,9 @@ tables {
         DIRECTION
         COUNTERPARTY_ID
         INSTRUMENT_ID
+        TRADE_DATE
+        ENTERED_BY
+        TRADE_STATUS
 
         primaryKey {
             TRADE_ID
@@ -43,6 +48,28 @@ tables {
         COUNTRY_CODE
         CURRENCY_ID
         ASSET_CLASS
+
+        primaryKey {
+            INSTRUMENT_ID
+        }
+    }
+
+    table (name = "POSITION", id = 2003) {
+        sequence(POSITION_ID, "PO")
+        INSTRUMENT_ID not null
+        QUANTITY
+        NOTIONAL
+        VALUE
+        PNL
+
+        primaryKey {
+            POSITION_ID
+        }
+    }
+
+    table (name = "INSTRUMENT_PRICE", id = 2004) {
+        INSTRUMENT_ID
+        LAST_PRICE
 
         primaryKey {
             INSTRUMENT_ID

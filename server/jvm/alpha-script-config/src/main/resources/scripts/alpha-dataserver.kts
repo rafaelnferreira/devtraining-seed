@@ -9,7 +9,7 @@
  * Modification History
  */
 dataServer {
-    query ("ALL_TRADES", TRADE)
+    query ("ALL_TRADES", TRADE_VIEW)
 
     query ("ALL_PRICES", TRADE) {
         fields {
