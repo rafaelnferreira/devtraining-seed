@@ -20,7 +20,7 @@ tables {
         SYMBOL
         DIRECTION
         COUNTERPARTY_ID
-        INSTRUMENT_ID
+        INSTRUMENT_ID not null
         TRADE_DATE
         ENTERED_BY
         TRADE_STATUS
@@ -64,6 +64,12 @@ tables {
 
         primaryKey {
             POSITION_ID
+        }
+
+        indices {
+            unique {
+                INSTRUMENT_ID
+            }
         }
     }
 

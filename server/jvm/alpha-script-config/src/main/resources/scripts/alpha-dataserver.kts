@@ -47,4 +47,6 @@ dataServer {
         }
     }
 
+    query("ALL_POSITIONS", POSITION)
+
 }
