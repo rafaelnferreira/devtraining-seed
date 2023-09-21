@@ -1,4 +1,10 @@
 import global.genesis.TradeStateMachine
+import global.genesis.alpha.message.event.PositionReport
+import global.genesis.commons.standards.GenesisPaths
+import global.genesis.gen.view.repository.TradeViewAsyncRepository
+import global.genesis.jackson.core.GenesisJacksonMapper
+import java.io.File
+import java.time.LocalDate
 
 /**
  * System              : Genesis Business Library
@@ -13,6 +19,8 @@ import global.genesis.TradeStateMachine
 eventHandler {
 
     val stateMachine = inject<TradeStateMachine>()
+
+    val tradeViewRepo = inject<TradeViewAsyncRepository>()
 
     eventHandler<Trade>(name = "TRADE_INSERT") {
         schemaValidation = false
@@ -133,6 +141,24 @@ eventHandler {
         }
         onCommit { event ->
             entityDb.modify(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<PositionReport> {
+        onCommit {
+            val mapper = GenesisJacksonMapper.csvWriter<TradeView>()
+            val today = LocalDate.now().toString()
+            val positionReportFolder = File(GenesisPaths.runtime()).resolve("position-minute-report")
+            if (!positionReportFolder.exists()) positionReportFolder.mkdirs()
+            tradeViewRepo.getBulk()
+                .toList()
+                .groupBy { it.counterpartyName }
+                .forEach { (counterParty, trades) ->
+                    val file = positionReportFolder.resolve("${counterParty}_$today.csv")
+                    if (file.exists()) file.delete()
+                    mapper.writeValues(file).use { it.writeAll(trades) }
+                }
             ack()
         }
     }

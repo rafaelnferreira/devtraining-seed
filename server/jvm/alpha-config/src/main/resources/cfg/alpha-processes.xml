@@ -44,4 +44,14 @@
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
         <language>pal</language>
     </process>
+    <process name="ALPHA_EVALUATOR">
+        <start>true</start>
+        <groupId>ALPHA</groupId>
+        <options>-Xmx512m -DXSD_VALIDATE=false</options>
+        <module>genesis-evaluator</module>
+        <primaryOnly>true</primaryOnly>
+        <package>global.genesis.eventhandler,global.genesis.evaluator</package>
+        <description>Dynamic/time rules engine</description>
+        <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
+    </process>
 </processes>
