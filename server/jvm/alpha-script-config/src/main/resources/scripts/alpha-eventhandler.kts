@@ -18,7 +18,17 @@ eventHandler {
         schemaValidation = false
 
         onValidate { event ->
-            val qty = event.details.quantity ?: 0
+            val message = event.details
+
+            verify {
+                message.counterpartyId?.let { counterpartyId ->
+                    entityDb hasEntry Counterparty.ById(counterpartyId)
+                }
+
+                entityDb hasEntry Instrument.ById(message.instrumentId)
+            }
+
+            val qty = message.quantity ?: 0
             require(qty > 0) { "Quantity must be greater than zero " }
             ack()
         }
@@ -45,7 +55,7 @@ eventHandler {
     }
 
     eventHandler<Trade>(name = "TRADE_ALLOCATED", transactional = true) {
-        onCommit {event ->
+        onCommit { event ->
             val message = event.details
             stateMachine.modify(message.tradeId) { trade ->
                 trade.tradeStatus = TradeStatus.ALLOCATED
@@ -55,7 +65,7 @@ eventHandler {
     }
 
     eventHandler<Trade>(name = "TRADE_CANCELLED", transactional = true) {
-        onCommit {event ->
+        onCommit { event ->
             val message = event.details
             stateMachine.modify(message.tradeId) { trade ->
                 trade.tradeStatus = TradeStatus.CANCELLED
