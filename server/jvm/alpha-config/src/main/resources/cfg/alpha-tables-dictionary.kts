@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.analysis.decompiler.stub.flags.VALUE_CLASS
 
 tables {
 
-    table (name = "TRADE", id = 2000) {
+    table (name = "TRADE", id = 2000, audit = details(id=2100, sequence="TR")) {
         sequence(TRADE_ID, "TR")
         QUANTITY
         PRICE not null

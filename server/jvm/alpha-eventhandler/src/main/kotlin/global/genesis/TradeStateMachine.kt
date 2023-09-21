@@ -43,17 +43,28 @@ class TradeStateMachine @Inject constructor(
             isMutable = false
 
             onCommit { trade ->
-               trade.enteredBy = ""
+                trade.enteredBy = ""
             }
 
         }
     }
 
-    suspend fun insert(trade: Trade): Transition<Trade, TradeStatus, TradeEffect> = internalState.create(trade)
-    suspend fun modify(tradeId: String, modify: suspend (Trade) -> Unit): Transition<Trade, TradeStatus, TradeEffect>? =
-        internalState.update(Trade.ById(tradeId)) { trade, _ -> modify(trade) }
+    suspend fun insert(
+        tx: AsyncMultiEntityReadWriteGenericSupport,
+        trade: Trade
+    ): Transition<Trade, TradeStatus, TradeEffect> = internalState.withTransaction(tx) { create(trade) }
 
-    suspend fun modify(trade: Trade): Transition<Trade, TradeStatus, TradeEffect>? = internalState.update(trade)
+    suspend fun modify(
+        tradeId: String,
+        tx: AsyncMultiEntityReadWriteGenericSupport,
+        modify: suspend (Trade) -> Unit
+    ): Transition<Trade, TradeStatus, TradeEffect>? =
+        internalState.withTransaction(tx) { update(Trade.ById(tradeId)) { trade, _ -> modify(trade) } }
+
+    suspend fun modify(
+        trade: Trade,
+        tx: AsyncMultiEntityReadWriteGenericSupport
+    ): Transition<Trade, TradeStatus, TradeEffect>? = internalState.withTransaction(tx) { internalState.update(trade) }
 }
 
 sealed class TradeEffect {

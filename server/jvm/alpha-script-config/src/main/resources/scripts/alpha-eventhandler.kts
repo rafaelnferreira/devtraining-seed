@@ -36,7 +36,7 @@ eventHandler {
         onCommit { event ->
             val trade = event.details
             trade.enteredBy = event.userName
-            stateMachine.insert(trade)
+            stateMachine.insert(entityDb, trade)
             ack()
         }
     }
@@ -49,15 +49,17 @@ eventHandler {
             ack()
         }
         onCommit { event ->
-            stateMachine.modify(event.details)
+            stateMachine.modify(event.details, entityDb)
             ack()
         }
     }
 
     eventHandler<Trade>(name = "TRADE_ALLOCATED", transactional = true) {
+        schemaValidation = false
+
         onCommit { event ->
             val message = event.details
-            stateMachine.modify(message.tradeId) { trade ->
+            stateMachine.modify(message.tradeId, entityDb) { trade ->
                 trade.tradeStatus = TradeStatus.ALLOCATED
             }
             ack()
@@ -67,7 +69,7 @@ eventHandler {
     eventHandler<Trade>(name = "TRADE_CANCELLED", transactional = true) {
         onCommit { event ->
             val message = event.details
-            stateMachine.modify(message.tradeId) { trade ->
+            stateMachine.modify(message.tradeId, entityDb) { trade ->
                 trade.tradeStatus = TradeStatus.CANCELLED
             }
             ack()
