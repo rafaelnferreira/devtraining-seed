@@ -25,6 +25,12 @@ eventHandler {
     eventHandler<Trade>(name = "TRADE_INSERT") {
         schemaValidation = false
 
+        permissioning {
+            auth(mapName = "ENTITY_VISIBILITY") {
+                field { counterpartyId }
+            }
+        }
+
         onValidate { event ->
             val message = event.details
 

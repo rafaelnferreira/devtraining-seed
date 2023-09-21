@@ -24,6 +24,8 @@ systemDefinition {
             name = "JVM_OPTIONS",
             value = "-XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=30 -XX:+UseG1GC -XX:+UseStringDeduplication -XX:OnOutOfMemoryError=\"handleOutOfMemoryError.sh %p\""
         )
+        item(name="ADMIN_PERMISSION_ENTITY_TABLE", value = "COUNTERPARTY")
+        item(name="ADMIN_PERMISSION_ENTITY_FIELD", value = "COUNTERPARTY_ID")
     }
 
     systems {
