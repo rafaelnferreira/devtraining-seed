@@ -65,7 +65,11 @@ val distribution by configurations.creating {
 
 // To give custom name to the distribution package
 tasks {
-    distZip {
+    distTar {
+	    mustRunAfter(":alpha-deploy:copyDependencies")
+    }
+    
+    distZip {  
         archiveBaseName.set("genesisproduct-alpha")
         archiveClassifier.set("bin")
         archiveExtension.set("zip")
