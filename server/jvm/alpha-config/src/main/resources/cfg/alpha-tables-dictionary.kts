@@ -17,6 +17,7 @@ tables {
         sequence(TRADE_ID, "TR")
         QUANTITY
         PRICE not null
+        FX_RATE
         SYMBOL
         DIRECTION
         COUNTERPARTY_ID

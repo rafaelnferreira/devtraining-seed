@@ -10,7 +10,16 @@ systemDefinition {
         item(name = "MetricsEnabled", value = "false")
         item(name = "ZeroMQProxyInboundPort", value = "5001")
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
+        
+        // postgres
         item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")
+        
+        // oracle
+        //item(name = "DbHost", value = "jdbc:oracle:thin:system/Hoothoot1@localhost:1521/XE")
+
+        // sql server
+        //item(name = "DbHost", value = "jdbc:sqlserver://localhost:1433;trustServerCertificate=true;username=SA;password=Rootroot1")
+        
         item(name = "DbMode", value = "VANILLA")
         item(name = "GenesisNetProtocol", value = "V2")
         item(name = "ResourcePollerTimeout", value = "5")

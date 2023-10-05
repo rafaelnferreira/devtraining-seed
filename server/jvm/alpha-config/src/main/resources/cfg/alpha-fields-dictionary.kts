@@ -15,6 +15,7 @@ fields {
     field("TRADE_ID", type = STRING)
     field("QUANTITY", type = INT)
     field("PRICE", type = DOUBLE)
+    field("FX_RATE", type = BIGDECIMAL(22,12))
     field("SYMBOL", type = STRING)
     field("DIRECTION", type = ENUM("BUY", "SELL", default = "BUY"))
     field("TRADE_DATE", type = DATETIME )
