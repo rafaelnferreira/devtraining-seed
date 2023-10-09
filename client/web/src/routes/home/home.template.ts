@@ -25,6 +25,15 @@ export const HomeTemplate = html<Home>`
           :updateFormUiSchema=${() => tradeFormUpdateSchema}
         ></entity-management>
     </div>
+
+    <div>
+
+     <approve-trade-button @tradeSubmitted=${ (x,c) => x.approveTrade(c.event)}>
+
+     </approve-trade-button>
+
+    </div>
+
     <div class="top-layout">
         <zero-card class="positions-card">
             <span class="card-title">Positions</span>

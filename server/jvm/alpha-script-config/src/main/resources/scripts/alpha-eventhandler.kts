@@ -26,6 +26,7 @@ eventHandler {
         schemaValidation = false
 
         permissioning {
+            permissionCodes = listOf("CAPTURE_TRADE")
             auth(mapName = "ENTITY_VISIBILITY") {
                 field { counterpartyId }
             }
@@ -69,6 +70,11 @@ eventHandler {
     }
 
     eventHandler<Trade>(name = "TRADE_ALLOCATED", transactional = true) {
+
+        permissioning {
+            permissionCodes = listOf("APPROVE_TRADE")
+        }
+
         schemaValidation = false
 
         onCommit { event ->

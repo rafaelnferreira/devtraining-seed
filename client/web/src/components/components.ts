@@ -6,11 +6,12 @@ import { g2plotChartsComponents } from '@genesislcap/g2plot-chart';
 import { logger } from '../utils';
 import { Form } from '@genesislcap/foundation-forms';
 import { foundationLayoutComponents } from '@genesislcap/foundation-layout';
+import { ApproveTradeButton } from './approve-trade-button';
 
 EntityManagement;
 Form;
 
-provideFASTDesignSystem().register(allComponents);
+provideFASTDesignSystem().register(allComponents, ApproveTradeButton);
 
 enum ResourceType {
   LOCAL = 'LOCAL',

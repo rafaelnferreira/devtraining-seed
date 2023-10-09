@@ -80,11 +80,16 @@ const name = 'home-route';
   styles,
 })
 export class Home extends FASTElement {
+  
   @observable columns: any = COLUMNS;
 
   public positionsGrid!: ZeroGridPro;
 
   @Connect connection: Connect;
+
+  approveTrade(event: Event) {
+    console.log('approving trade id: ' + Event);
+  }
 
   constructor() {
     super();
