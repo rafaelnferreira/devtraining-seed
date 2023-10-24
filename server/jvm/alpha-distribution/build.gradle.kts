@@ -26,7 +26,7 @@ distributions {
                 include("alpha-*.jar")
             }
             into("alpha/lib") {
-                from("${project.rootProject.buildDir}/dependencies")
+                from(project.rootProject.layout.buildDirectory.dir("dependencies"))
                 duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
                 exclude("genesis-*.jar")
