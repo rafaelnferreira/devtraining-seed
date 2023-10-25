@@ -2,7 +2,7 @@ package genesis.cfg
 
 systemDefinition {
     global {
-        item(name = "DEPLOYED_PRODUCT", value = "alpha")
+        // item(name = "DEPLOYED_PRODUCT", value = "alpha")
         item(name = "MqLayer", value = "ZeroMQ")
         item(name = "DbLayer", value = "SQL")
         item(name = "DictionarySource", value = "DB")
@@ -24,8 +24,10 @@ systemDefinition {
             name = "JVM_OPTIONS",
             value = "-XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=30 -XX:+UseG1GC -XX:+UseStringDeduplication -XX:OnOutOfMemoryError=\"handleOutOfMemoryError.sh %p\""
         )
-        item(name="ADMIN_PERMISSION_ENTITY_TABLE", value = "COUNTERPARTY")
-        item(name="ADMIN_PERMISSION_ENTITY_FIELD", value = "COUNTERPARTY_ID")
+
+        // moved to alpha-system-definition GSF-6375
+        //item(name="ADMIN_PERMISSION_ENTITY_TABLE", value = "COUNTERPARTY")
+        //item(name="ADMIN_PERMISSION_ENTITY_FIELD", value = "COUNTERPARTY_ID")
     }
 
     systems {
