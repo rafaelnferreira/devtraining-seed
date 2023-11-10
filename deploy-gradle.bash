@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+trap 'stop_spinner' ERR
 
 get_process_uptime() {
     local pid="$1"
@@ -11,7 +12,7 @@ get_process_uptime() {
 }
 
 stop_spinner() {
-    uptime_seconds=$(get_process_uptime "$spinner_pid")
+    local uptime_seconds=$(get_process_uptime "$spinner_pid")
     kill $spinner_pid &>/dev/null
     echo -e "\n✅ Done in ${uptime_seconds} seconds \n"
 }
@@ -20,21 +21,23 @@ spinner() {
     iterations=(⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏)
     while true; do
         for i in "${iterations[@]}"; do
-            echo -ne "\r$i $1...${NC}"
+            echo -ne "\r${UNDERLINE}[${NC} $i $1 ${NC}${UNDERLINE}]${NC}"
             sleep 0.1
         done
     done
 }
 
-spinner "🔨 ${BLUE}Building it" &
+spinner "🔨 ${BLUE}Building" &
 spinner_pid=$!
 
 ./gradlew :genesisproduct-alpha:assemble
 
 stop_spinner
 
-spinner "🚀 ${BLUE}Deploying to $GENESIS_HOME" &
+spinner "🚀 ${BLUE}Deploying" &
 spinner_pid=$!
+
+echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
 
 ./gradlew :genesisproduct-alpha:alpha-deploy:setupEnvironment
 
