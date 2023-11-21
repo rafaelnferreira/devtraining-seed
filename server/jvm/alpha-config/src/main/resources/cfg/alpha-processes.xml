@@ -25,13 +25,14 @@
     <process name="ALPHA_EVENT_HANDLER">
         <groupId>ALPHA</groupId>
         <start>true</start>
-        <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false</options>
+        <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5105</options>
         <module>genesis-pal-eventhandler</module>
-        <package>global.genesis.eventhandler.pal</package>
+        <package>global.genesis.eventhandler.pal,global.genesis.eventhandler,mycompany</package>
         <script>alpha-eventhandler.kts</script>
         <description>Handles events</description>
         <classpath>alpha-messages*,alpha-eventhandler*</classpath>
         <language>pal</language>
+        <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
     </process>
     <process name="ALPHA_CONSOLIDATOR">
         <groupId>ALPHA</groupId>

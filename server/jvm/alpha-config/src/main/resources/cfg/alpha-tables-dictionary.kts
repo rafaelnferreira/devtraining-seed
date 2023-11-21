@@ -83,4 +83,34 @@ tables {
         }
     }
 
+    table (name = "EXTERNAL_TRADE", id = 2005) {
+        autoIncrement(TRADE_ID_INT)
+
+        QUANTITY
+        PRICE
+        FX_RATE
+        SYMBOL
+        DIRECTION
+        COUNTERPARTY_ID
+        INSTRUMENT_ID
+        TRADE_DATE
+        ENTERED_BY
+        TRADE_STATUS
+        BROKER_FEE
+        TRADER
+        DESK
+        BOOK
+        SRC_SYSTEM
+        INSTRUMENT_TYPE
+        CALLABLE
+        MC_CONTRACT_ID
+        MC_RISK_CLASSIFICATION
+        MC_EXPOSURE_TYPE
+        MC_RATING
+        
+        primaryKey {
+            TRADE_ID_INT
+        }       
+    }
+
 }

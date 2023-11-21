@@ -43,4 +43,18 @@ fields {
     field("VALUE", type = DOUBLE)
     field("PNL", type = DOUBLE)
 
+    // external trade
+    field("TRADE_ID_INT", type = INT)
+    field("BROKER_FEE", type = BIGDECIMAL)
+    field("TRADER", type = STRING)
+    field("DESK", type = STRING)
+    field("BOOK", type = STRING)
+    field("SRC_SYSTEM", type = STRING)
+    field("INSTRUMENT_TYPE", type = STRING)
+    field("CALLABLE", type = STRING)
+    field("MC_CONTRACT_ID", type = STRING)
+    field("MC_RISK_CLASSIFICATION", type = STRING)
+    field("MC_EXPOSURE_TYPE", type = STRING)
+    field("MC_RATING", type = STRING)
+
 }

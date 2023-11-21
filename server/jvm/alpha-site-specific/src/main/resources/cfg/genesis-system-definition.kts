@@ -8,7 +8,8 @@ systemDefinition {
         item(name = "DbLayer", value = "SQL")
         item(name = "DictionarySource", value = "DB")
         item(name = "AliasSource", value = "DB")
-        item(name = "MetricsEnabled", value = "false")
+        item(name = "MetricsEnabled", value = "true")
+        item(name = "MetricsReportType", value = "SLF4J")
         item(name = "ZeroMQProxyInboundPort", value = "5001")
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
         
