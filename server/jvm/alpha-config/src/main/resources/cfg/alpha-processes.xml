@@ -34,6 +34,17 @@
         <language>pal</language>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
     </process>
+    <process name="ALPHA_REQUEST_SERVER">
+        <groupId>ALPHA</groupId>
+        <start>true</start>
+        <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false</options>
+        <module>genesis-pal-requestserver</module>
+        <package>global.genesis.requestreply.pal</package>
+        <script>alpha-reqrep.kts</script>
+        <description>Server REST requests</description>
+        <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
+        <language>pal</language>
+    </process>
     <process name="ALPHA_CONSOLIDATOR">
         <groupId>ALPHA</groupId>
         <start>true</start>

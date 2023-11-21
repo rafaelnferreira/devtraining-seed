@@ -18,4 +18,12 @@ requestReplies {
         }
     }
 
+    requestReply("TRADE_BY_OPTIONAL_ID", TRADE_VIEW) {
+        request {
+            TRADE_ID withTransformation { id, set ->
+                id?.uppercase() ?: "*"
+            }
+        }
+    }
+
 }
