@@ -37,6 +37,8 @@ typedMessageDelegator.addMessageListener('EVENT_COUNTERPARTY_UPLOAD_RECORD', { G
             def dbRecord = writeResult.savedRecords.first()
             def id = dbRecord.getString (Counterparty.COUNTERPARTY_ID.name)
 
+            LOG.debug("received write result for id: {}", id)
+
             if (idProvided) {
                 sendAck(channel, set)
             } else {
