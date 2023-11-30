@@ -1,0 +1,69 @@
+package scripts
+
+import global.genesis.commons.model.GenesisSet
+import global.genesis.db.DbRecord
+import global.genesis.db.engine.WriteResult
+import global.genesis.db.rx.RxDb
+import global.genesis.net.channel.GenesisChannel
+import global.genesis.process.net.MessageDelegator
+import global.genesis.process.util.RecordBuilder
+import global.genesis.gen.dao.Counterparty
+import org.slf4j.LoggerFactory
+
+import static global.genesis.process.script.EventUtils.handleError
+import static global.genesis.process.script.EventUtils.sendAck
+
+LOG = LoggerFactory.getLogger('alpha-groovy-eventhandler')
+
+LOG.info("Script init")
+
+def typedRxDb = rxDb as RxDb
+def typedMessageDelegator = messageDelegator as MessageDelegator
+
+typedMessageDelegator.addMessageListener('EVENT_COUNTERPARTY_UPLOAD_RECORD', { GenesisSet set, GenesisChannel channel ->
+
+    LOG.info("Received event for upload record")
+
+    DbRecord rec = RecordBuilder.newBuilder(typedRxDb.getDictionary())
+            .withSet(set)
+            .forTable('COUNTERPARTY')
+            .build()
+
+    def idProvided = rec.getString(Counterparty.COUNTERPARTY_ID.name) != null
+
+    typedRxDb.insert(rec).subscribe(
+        { WriteResult writeResult  ->
+            // onNext
+            def dbRecord = writeResult.savedRecords.first()
+            def id = dbRecord.getString (Counterparty.COUNTERPARTY_ID.name)
+
+            if (idProvided) {
+                sendAck(channel, set)
+            } else {
+                def generated = GenesisSet.builder().setString("GENERATED_ID", id).build()
+                set.setArray("GENERATED", generated)
+                sendAck(channel, set)
+            }
+
+            typedRxDb.get(dbRecord, "COUNTERPARTY_BY_ID").subscribe(
+        {
+                    if (it == null) {
+                        LOG.error("NULL right after save for writeResult with id: {}", id )
+                    } else {
+                        LOG.trace("Read the counterparty: {}", it)
+                    }
+            },
+            { Throwable throwable ->
+                        // onError
+                        LOG.error("Error on getting 'EVENT_COUNTERPARTY_UPLOAD_RECORD': {}", throwable.getMessage())
+                    })
+        },
+        { Throwable throwable ->
+            // onError
+            LOG.error("Error on inserting 'EVENT_COUNTERPARTY_UPLOAD_RECORD': {}", throwable.getMessage())
+            handleError(throwable, channel, set)
+        }
+    )
+})
+
+LOG.info("Listener setup")

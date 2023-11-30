@@ -1,6 +1,7 @@
 dependencies {
     implementation("global.genesis:genesis-pal-execution")
     implementation("global.genesis:genesis-eventhandler")
+    implementation("global.genesis:genesis-groovy")
     implementation(project(":alpha-messages"))
     api("global.genesis:genesis-db")
     compileOnly(project(":alpha-config"))

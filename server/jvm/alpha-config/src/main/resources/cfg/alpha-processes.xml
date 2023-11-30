@@ -22,6 +22,17 @@
         <language>pal</language>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
     </process>
+    <process name="ALPHA_GROOVY_EVENT_HANDLER">
+        <groupId>ALPHA</groupId>
+        <start>true</start>
+        <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5105</options>
+        <module>genesis-eventhandler</module>
+        <package>global.genesis.eventhandler#mycompany.events</package>
+        <script>alpha-eventhandler.gy</script>
+        <description>Handles events (Groovy)</description>
+        <classpath>alpha-messages*,alpha-eventhandler*</classpath>
+        <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
+    </process>
     <process name="ALPHA_EVENT_HANDLER">
         <groupId>ALPHA</groupId>
         <start>true</start>
@@ -35,7 +46,7 @@
     </process>
     <process name="ALPHA_CONSOLIDATOR">
         <groupId>ALPHA</groupId>
-        <start>true</start>
+        <start>false</start>
         <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false</options>
         <module>genesis-pal-consolidator</module>
         <package>global.genesis.pal.consolidator</package>
@@ -45,7 +56,7 @@
         <language>pal</language>
     </process>
     <process name="ALPHA_EVALUATOR">
-        <start>true</start>
+        <start>false</start>
         <groupId>ALPHA</groupId>
         <options>-Xmx512m -DXSD_VALIDATE=false</options>
         <module>genesis-evaluator</module>

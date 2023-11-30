@@ -2,15 +2,15 @@ package genesis.cfg
 
 systemDefinition {
     global {
-        // item(name = "DEPLOYED_PRODUCT", value = "alpha")
+        item(name = "DEPLOYED_PRODUCT", value = "alpha")
         item(name = "MqLayer", value = "ZeroMQ")
-        item(name = "DbLayer", value = "SQL")
+        item(name = "DbLayer", value = "FDB")
         item(name = "DictionarySource", value = "DB")
         item(name = "AliasSource", value = "DB")
         item(name = "MetricsEnabled", value = "false")
         item(name = "ZeroMQProxyInboundPort", value = "5001")
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
-        item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")
+        item(name = "DbHost", value = "localhost")
         item(name = "DbMode", value = "VANILLA")
         item(name = "GenesisNetProtocol", value = "V2")
         item(name = "ResourcePollerTimeout", value = "5")
@@ -22,7 +22,7 @@ systemDefinition {
         item(name = "DbSqlConnectionPoolSize", value = "4")
         item(
             name = "JVM_OPTIONS",
-            value = "-XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=30 -XX:+UseG1GC -XX:+UseStringDeduplication -XX:OnOutOfMemoryError=\"handleOutOfMemoryError.sh %p\""
+            value = "-XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=30 -XX:+UseG1GC -XX:+UseStringDeduplication -XX:OnOutOfMemoryError=\"handleOutOfMemoryError.sh %p\" -Djava.net.preferIPv4Stack=true"
         )
 
         // moved to alpha-system-definition GSF-6375
