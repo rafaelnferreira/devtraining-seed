@@ -1,20 +1,32 @@
 package mycompany.events
 
 import com.google.inject.Inject
+import com.google.inject.Provider
 import global.genesis.alpha.message.event.BulkCounterPartyUpload
 import global.genesis.commons.annotation.Module
 import global.genesis.commons.model.GenesisSet.Companion.genesisSet
 import global.genesis.eventhandler.typed.async.AsyncEventHandler
 import global.genesis.message.core.event.Event
 import global.genesis.message.core.event.EventReply
+import global.genesis.net.GenesisMessageClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.slf4j.LoggerFactory
+import javax.annotation.PostConstruct
 
 @Module
-class EventBulkCounterpartyUpload @Inject constructor(private val clientProvider: ClientProvider)
+class EventBulkCounterpartyUpload @Inject constructor(private val clientProvider: Provider<GenesisMessageClient>)
     : AsyncEventHandler<BulkCounterPartyUpload, EventReply> {
+
+        private lateinit var client: GenesisMessageClient
+
+        @PostConstruct
+        fun init() {
+            client = clientProvider.get()
+            LOG.info("Client is: {}", client)
+        }
+
     override suspend fun process(message: Event<BulkCounterPartyUpload>): EventReply {
 
         LOG.info("Received bulk event, will dispatch {} sub events", message.details.quantity)
@@ -34,7 +46,7 @@ class EventBulkCounterpartyUpload @Inject constructor(private val clientProvider
                         }
                     }
 
-                    val response = clientProvider.client.suspendRequest(request)
+                    val response = client.suspendRequest(request)
 
                     if (response == null || response.messageType.contains("NACK", true)) {
                         LOG.error("Got a nack for CP_${it}: {}", response)
