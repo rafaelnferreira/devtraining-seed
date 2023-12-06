@@ -16,6 +16,7 @@ import { Route, RouterConfiguration } from '@microsoft/fast-router';
 import { defaultLayout, loginLayout } from '../layouts';
 import { Home } from './home/home';
 import { NotFound } from './not-found/not-found';
+import {Reports} from "./reports/reports";
 
 export class MainRouterConfig extends RouterConfiguration<LoginSettings> {
   constructor(
@@ -29,7 +30,10 @@ export class MainRouterConfig extends RouterConfiguration<LoginSettings> {
     super();
   }
 
-  public allRoutes = [{ index: 1, path: 'home', title: 'Home', icon: 'home', variant: 'solid' }];
+  public allRoutes = [
+      { index: 1, path: 'home', title: 'Home', icon: 'home', variant: 'solid' },
+      { index: 2, path: 'reports', title: 'Reports', icon: 'file', variant: 'solid' }
+  ];
 
   public configure() {
     this.title = 'Developer Training';
@@ -64,6 +68,7 @@ export class MainRouterConfig extends RouterConfiguration<LoginSettings> {
         childRouters: true,
       },
       { path: 'home', element: Home, title: 'Home', name: 'home' },
+      { path: 'reports', element: Reports, title: 'Report', name: 'reports' },
       { path: 'not-found', element: NotFound, title: 'Not Found', name: 'not-found' }
     );
 

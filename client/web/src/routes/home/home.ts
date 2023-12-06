@@ -1,9 +1,9 @@
 import { customElement, FASTElement, observable } from '@microsoft/fast-element';
+import { Connect } from '@genesislcap/foundation-comms';
 import { HomeTemplate as template } from './home.template';
 import { HomeStyles as styles } from './home.styles';
 import {EntityManagement} from '@genesislcap/foundation-entity-management';
 import { ZeroGridPro } from '@genesislcap/foundation-zero-grid-pro';
-import { Connect } from '@genesislcap/foundation-comms';
 
 EntityManagement;
 

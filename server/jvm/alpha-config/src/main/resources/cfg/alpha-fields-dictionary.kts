@@ -36,6 +36,7 @@ fields {
     field("CURRENCY_ID", type = STRING)
     field("ASSET_CLASS", type = STRING)
     field("LAST_PRICE", type = DOUBLE)
+    field("ISIN", type = STRING, maxSize = 20)
 
     // position
     field("POSITION_ID", type = STRING)
