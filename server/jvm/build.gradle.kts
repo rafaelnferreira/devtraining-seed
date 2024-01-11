@@ -10,6 +10,11 @@ subprojects  {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.gradle.maven-publish")
 
+    configurations {
+        "compileClasspath" {
+            resolutionStrategy.force("com.github.jnr:jnr-ffi:2.2.11")
+        }
+    }
 
     dependencies {
         implementation(platform("global.genesis:genesis-bom:${properties["genesisVersion"]}"))

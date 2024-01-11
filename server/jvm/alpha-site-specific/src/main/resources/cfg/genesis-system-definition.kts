@@ -2,7 +2,7 @@ package genesis.cfg
 
 systemDefinition {
     global {
-        // item(name = "DEPLOYED_PRODUCT", value = "alpha")
+        item(name = "DEPLOYED_PRODUCT", value = "alpha")
         item(name = "MqLayer", value = "ZeroMQ")
         item(name = "DbLayer", value = "SQL")
         item(name = "DictionarySource", value = "DB")
@@ -38,6 +38,7 @@ systemDefinition {
                 host(LOCAL_HOST)
             }
 
+            // item(name = "ClusterMode", value = "CONSUL")
             item(name = "DbNamespace", value = "alpha")
             item(name = "ClusterPort", value = "6000")
             item(name = "location", value = "LO")
