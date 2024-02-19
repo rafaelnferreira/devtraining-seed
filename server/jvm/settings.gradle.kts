@@ -33,6 +33,7 @@ pluginManagement {
 include("alpha-config")
 include("alpha-messages")
 include("alpha-eventhandler")
+include("alpha-consolidator")
 include("alpha-script-config")
 include("alpha-distribution")
 include("alpha-dictionary-cache")
