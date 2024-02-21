@@ -22,7 +22,7 @@ systemDefinition {
         item(name = "DbSqlConnectionPoolSize", value = "4")
         item(
             name = "JVM_OPTIONS",
-            value = "-XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=30 -XX:+UseG1GC -XX:+UseStringDeduplication -XX:OnOutOfMemoryError=\"handleOutOfMemoryError.sh %p\""
+            value = "-XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=30 -XX:+UseG1GC -XX:+UseStringDeduplication -XX:OnOutOfMemoryError=\"handleOutOfMemoryError.sh %p\" -Djava.net.preferIPv4Stack=true"
         )
 
         // moved to alpha-system-definition GSF-6375
