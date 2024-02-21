@@ -10,3 +10,9 @@ dependencies {
 }
 
 description = "alpha-consolidator"
+
+tasks {
+    copyDependencies {
+	    enabled = false
+    }
+}

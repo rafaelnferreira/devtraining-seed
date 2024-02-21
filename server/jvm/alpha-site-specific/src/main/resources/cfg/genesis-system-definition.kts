@@ -2,7 +2,7 @@ package genesis.cfg
 
 systemDefinition {
     global {
-        item(name = "DEPLOYED_PRODUCT", value = "alpha")
+        //item(name = "DEPLOYED_PRODUCT", value = "alpha")
         
         item(name = "MqLayer", value = "ZeroMQ")
         item(name = "DbLayer", value = "SQL")
