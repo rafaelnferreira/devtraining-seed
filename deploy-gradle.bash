@@ -42,8 +42,8 @@ echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
 ./gradlew :genesisproduct-alpha:alpha-deploy:setupEnvironment
 
 ./gradlew :genesisproduct-alpha:alpha-deploy:install-auth-distribution.zip \
- :genesisproduct-alpha:alpha-deploy:install-alpha-site-specific-1.0.0-SNAPSHOT-bin.zip-distribution.zip \
- :genesisproduct-alpha:alpha-deploy:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin.zip-distribution.zip
+ :genesisproduct-alpha:alpha-deploy:install-alpha-site-specific-1.0.0-SNAPSHOT-bin-distribution.zip \
+ :genesisproduct-alpha:alpha-deploy:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
 
 genesisInstall --ignoreHooks
 

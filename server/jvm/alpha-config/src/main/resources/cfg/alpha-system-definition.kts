@@ -12,8 +12,8 @@ systemDefinition {
     global {
         item(name="ADMIN_PERMISSION_ENTITY_TABLE", value = "COUNTERPARTY")
         item(name="ADMIN_PERMISSION_ENTITY_FIELD", value = "COUNTERPARTY_ID")
-        item(name="SqlEnableSequenceGeneration", value = "true")
-        item(name = "GenerateDatabaseRepositories", value = "true")
+        item(name="SqlEnableSequenceGeneration", value = "false")
+        item(name="GenerateDatabaseRepositories", value = "false")
     }
 
     systems {

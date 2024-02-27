@@ -48,7 +48,7 @@
     <process name="ALPHA_CONSOLIDATOR">
         <groupId>ALPHA</groupId>
         <start>true</start>
-        <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false</options>
+        <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5106</options>
         <module>genesis-pal-consolidator</module>
         <package>global.genesis.pal.consolidator</package>
         <script>alpha-consolidator.kts</script>

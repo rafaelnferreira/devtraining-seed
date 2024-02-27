@@ -23,13 +23,15 @@ dependencies {
         classifier = "bin",
         ext = "zip"
     )
-    genesisServer(
-        group = "global.genesis",
-        name = "genesis-notify-distribution",
-        version = properties["notifyVersion"].toString(),
-        classifier = "bin",
-        ext = "zip"
-    )
+    if (properties["notifyVersion"] != null ) {
+        genesisServer(
+            group = "global.genesis",
+            name = "genesis-notify-distribution",
+            version = properties["notifyVersion"].toString(),
+            classifier = "bin",
+            ext = "zip"
+        )
+    }
     genesisServer(project(":alpha-distribution", "distribution"))
     genesisServer(project(":alpha-site-specific", "distribution"))
     genesisWeb("client:web")
