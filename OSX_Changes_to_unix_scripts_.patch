@@ -1,0 +1,204 @@
+diff --color -ru genesis/scripts/unix/python3/GenesisRun scripts/unix/python3/GenesisRun
+--- genesis/scripts/unix/python3/GenesisRun	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/GenesisRun	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ import sys
+ import jvm
+
+diff --color -ru genesis/scripts/unix/python3/JvmRun scripts/unix/python3/JvmRun
+--- genesis/scripts/unix/python3/JvmRun	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/JvmRun	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ import sys
+ import jvm
+
+diff --color -ru genesis/scripts/unix/python3/installRelease scripts/unix/python3/installRelease
+--- genesis/scripts/unix/python3/installRelease	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/installRelease	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ from optparse import OptionParser
+ from distutils.version import StrictVersion
+diff --color -ru genesis/scripts/unix/python3/killGroup scripts/unix/python3/killGroup
+--- genesis/scripts/unix/python3/killGroup	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/killGroup	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ import os
+diff --color -ru genesis/scripts/unix/python3/killProcess scripts/unix/python3/killProcess
+--- genesis/scripts/unix/python3/killProcess	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/killProcess	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ import os
+diff --color -ru genesis/scripts/unix/python3/killServer scripts/unix/python3/killServer
+--- genesis/scripts/unix/python3/killServer	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/killServer	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ import daemonCommon
+diff --color -ru genesis/scripts/unix/python3/mon scripts/unix/python3/mon
+--- genesis/scripts/unix/python3/mon	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/mon	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # encoding: utf-8
+ 
+ import sys
+diff --color -ru genesis/scripts/unix/python3/optimiseLibs scripts/unix/python3/optimiseLibs
+--- genesis/scripts/unix/python3/optimiseLibs	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/optimiseLibs	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import os
+ import genesis
+diff --color -ru genesis/scripts/unix/python3/preCompileScripts scripts/unix/python3/preCompileScripts
+--- genesis/scripts/unix/python3/preCompileScripts	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/preCompileScripts	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ from xml.dom import minidom
+ import os
+diff --color -ru genesis/scripts/unix/python3/processRestarter.py scripts/unix/python3/processRestarter.py
+--- genesis/scripts/unix/python3/processRestarter.py	2024-02-28 11:31:54
++++ scripts/unix/python3/processRestarter.py	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import genesis
+ from xml.dom import minidom
+diff --color -ru genesis/scripts/unix/python3/pymodules/genesis.py scripts/unix/python3/pymodules/genesis.py
+--- genesis/scripts/unix/python3/pymodules/genesis.py	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/pymodules/genesis.py	2024-02-28 08:39:12
+@@ -384,7 +384,7 @@
+ 
+     pid = None
+     userName = user_name()
+-    cmd = 'ps -lf -u ' + userName
++    cmd = 'ps -o pid,command -u ' + userName
+     args = shlex.split(cmd)
+     output, error = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+     processes = output.decode('utf-8').split('\n')
+@@ -396,7 +396,7 @@
+                 process.find('startProcess') == -1 and
+                 process.find('GenesisRun') == -1):
+             processSplit = process.split()
+-            pid = processSplit[3]
++            pid = processSplit[0]
+ 
+     return pid
+ 
+@@ -407,7 +407,7 @@
+ 
+     pid = None
+     userName = user_name()
+-    cmd = 'ps -lf -u ' + userName
++    cmd = 'ps -o pid,command -u ' + userName
+     args = shlex.split(cmd)
+     output,error = subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
+     processes = output.decode('utf-8').split('\n')
+@@ -419,7 +419,7 @@
+                 process.find('startProcess') == -1 and
+                 process.find('GenesisRun') == -1):
+             processSplit = process.split()
+-            pid = processSplit[3]
++            pid = processSplit[0]
+ 
+     return pid
+ 
+@@ -431,7 +431,7 @@
+     """
+     pid = None
+     userName = user_name()
+-    cmd = 'ps -lf -u ' + userName
++    cmd = 'ps -o pid,command -u ' + userName
+     args = shlex.split(cmd)
+     output = subprocess.check_output(args)
+     processes = output.decode('utf-8').split('\n')
+@@ -440,7 +440,7 @@
+         if (process.find("ResourceDaemonStarter") > -1 and
+                 process.find(str(os.getpid())) == -1):
+             processSplit = process.split()
+-            pid = processSplit[3]
++            pid = processSplit[0]
+ 
+     return pid
+ 
+@@ -452,9 +452,9 @@
+     # myPid = str(os.getpid())
+     pids = [None] * len(givenProcesses)
+     # This has better compatibility with other linux systems
+-    # cmd = 'ps -lf -u ' + userName
++    # cmd = 'ps -ef -u ' + userName
+     # This is faster in CentOs
+-    cmd = 'ps -o pid,cmd -u ' + user_name()
++    cmd = 'ps -o pid,command -u ' + user_name()
+     args = shlex.split(cmd)
+     output, error = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+     foundProcesses = output.decode('utf-8').split('\n')
+diff --color -ru genesis/scripts/unix/python3/pymodules/jvm.py scripts/unix/python3/pymodules/jvm.py
+--- genesis/scripts/unix/python3/pymodules/jvm.py	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/pymodules/jvm.py	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ import os
+ import re
+ import sys
+diff --color -ru genesis/scripts/unix/python3/pymodules/killDaemon.py scripts/unix/python3/pymodules/killDaemon.py
+--- genesis/scripts/unix/python3/pymodules/killDaemon.py	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/pymodules/killDaemon.py	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # encoding: utf-8
+ 
+ import sys
+diff --color -ru genesis/scripts/unix/python3/startGroup scripts/unix/python3/startGroup
+--- genesis/scripts/unix/python3/startGroup	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/startGroup	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ import os
+diff --color -ru genesis/scripts/unix/python3/startProcess scripts/unix/python3/startProcess
+--- genesis/scripts/unix/python3/startProcess	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/startProcess	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import argparse
+ import daemonCommon
+diff --color -ru genesis/scripts/unix/python3/startServer scripts/unix/python3/startServer
+--- genesis/scripts/unix/python3/startServer	2024-02-28 11:31:54
++++ genesis/scripts/unix/python3/startServer	2024-02-28 11:35:13
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ import daemonCommon

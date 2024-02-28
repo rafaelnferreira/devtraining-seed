@@ -5,7 +5,7 @@ trap 'stop_spinner' ERR
 
 get_process_uptime() {
     local pid="$1"
-    local start_time=`date --date="$(ps -p $pid -o lstart=)" '+%s'`
+    local start_time=`date -j -f "%a %d %b %T %Y" "$(ps -p $pid -o lstart=)" '+%s'`
     local current_time=$(date +%s)
     local elapsed_seconds=$(( $current_time - $start_time ))
     echo "$elapsed_seconds"
@@ -45,9 +45,16 @@ echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
  :genesisproduct-alpha:alpha-deploy:install-alpha-site-specific-1.0.0-SNAPSHOT-bin-distribution.zip \
  :genesisproduct-alpha:alpha-deploy:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
 
+# Patching scripts for OSX
+patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts_.patch
+
 genesisInstall --ignoreHooks
 
 echo y | remap --commit
+
+# SendIt
+
+#./gradlew $(./gradlew :genesisproduct-alpha:alpha-deploy:tasks | grep SendIt- | cut -d' ' -f1 | awk '{print ":genesisproduct-alpha:alpha-deploy:"$1}' | paste -s -d ' ' - )
 
 stop_spinner
 

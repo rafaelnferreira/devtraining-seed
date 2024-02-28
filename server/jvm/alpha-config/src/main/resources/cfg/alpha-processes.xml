@@ -52,6 +52,7 @@
         <module>genesis-pal-consolidator</module>
         <package>global.genesis.pal.consolidator</package>
         <script>alpha-consolidator.kts</script>
+        <config>alpha-consolidator-process-config.kts</config>
         <description>Consolidates trades to calculate positions</description>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
         <language>pal</language>
