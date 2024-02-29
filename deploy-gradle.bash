@@ -30,7 +30,7 @@ spinner() {
 spinner "🔨 ${BLUE}Building" &
 spinner_pid=$!
 
-./gradlew :genesisproduct-alpha:assemble
+./gradlew :server:assemble
 
 stop_spinner
 
@@ -39,11 +39,11 @@ spinner_pid=$!
 
 echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
 
-./gradlew :genesisproduct-alpha:alpha-deploy:setupEnvironment
+./gradlew :server:alpha-app:setupEnvironment
 
-./gradlew :genesisproduct-alpha:alpha-deploy:install-auth-distribution.zip \
- :genesisproduct-alpha:alpha-deploy:install-alpha-site-specific-1.0.0-SNAPSHOT-bin-distribution.zip \
- :genesisproduct-alpha:alpha-deploy:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
+./gradlew :server:alpha-app:install-auth-distribution.zip \
+ :server:alpha-app:install-alpha-site-specific-1.0.0-SNAPSHOT-bin-distribution.zip \
+ :server:alpha-app:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
 
 # Patching scripts for OSX
 patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts_.patch
@@ -54,17 +54,17 @@ echo y | remap --commit
 
 # SendIt
 
-#./gradlew $(./gradlew :genesisproduct-alpha:alpha-deploy:tasks | grep SendIt- | cut -d' ' -f1 | awk '{print ":genesisproduct-alpha:alpha-deploy:"$1}' | paste -s -d ' ' - )
+#./gradlew $(./gradlew :server:alpha-app:tasks | grep SendIt- | cut -d' ' -f1 | awk '{print ":server:alpha-app:"$1}' | paste -s -d ' ' - )
 
 stop_spinner
 
  # missing here ignore hooks
- # :genesisproduct-alpha:alpha-deploy:genesisInstall \ 
+ # :server:alpha-app:genesisInstall \ 
 
- # :genesisproduct-alpha:alpha-deploy:loadInitialData \
- # :genesisproduct-alpha:alpha-deploy:remap \
+ # :server:alpha-app:loadInitialData \
+ # :server:alpha-app:remap \
 
  # runs everything together
- # :genesisproduct-alpha:alpha-deploy:deploy-genesisproduct-alpha.zip \
- # :genesisproduct-alpha:alpha-deploy:mon  
+ # :server:alpha-app:deploy-genesisproduct-alpha.zip \
+ # :server:alpha-app:mon  
     
