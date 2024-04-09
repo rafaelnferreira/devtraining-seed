@@ -70,7 +70,9 @@ allprojects {
     }
 
     repositories {
-        mavenLocal()
+        if (properties["USE_MVN_LOCAL"] == "true") {
+            mavenLocal()
+        }
         mavenCentral()
         maven {
             val repoUrl = if(properties["clientSpecific"] == "true") {

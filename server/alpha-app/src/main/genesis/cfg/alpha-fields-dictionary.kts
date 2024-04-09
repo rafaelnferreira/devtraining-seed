@@ -21,6 +21,7 @@ fields {
     field("TRADE_DATE", type = DATETIME )
     field("ENTERED_BY", type = STRING)
     field("TRADE_STATUS", type=ENUM("NEW", "ALLOCATED", "CANCELLED", default = "NEW"))
+    field("FX_RATE1", type = DOUBLE )
 
     // counterparty
     field("COUNTERPARTY_ID", type = STRING)

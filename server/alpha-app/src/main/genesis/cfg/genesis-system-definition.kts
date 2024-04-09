@@ -4,7 +4,9 @@ systemDefinition {
     global {
         item(name = "DEPLOYED_PRODUCT", value = "alpha")
         
-        item(name = "MqLayer", value = "JMS")
+        item(name = "MqLayer", value = "ZeroMQ")
+        item(name = "JmsUsername", value = "artemis")
+        item(name = "JmsPassword", value = "fd47076f2ae8975f853e95a4bac6de787ec39d05095d3f87d48558a77e5a4d3f", encrypted = true)
         item(name = "DbLayer", value = "SQL")
         item(name = "DictionarySource", value = "DB")
         item(name = "AliasSource", value = "DB")
@@ -12,6 +14,7 @@ systemDefinition {
         item(name = "MetricsReportType", value = "SLF4J")
         item(name = "ZeroMQProxyInboundPort", value = "5001")
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
+        item(name = "GenesisKey", value = "aB3cDeF7gHiJkLmN9oPqRs1tUvWxYz21")
         
         // postgres
         item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")

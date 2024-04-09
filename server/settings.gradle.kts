@@ -1,4 +1,3 @@
-import global.genesis.gradle.plugin.simple.ProjectType
 
 rootProject.name = "genesisproduct-alpha"
 
@@ -10,7 +9,9 @@ pluginManagement {
     }
 
     repositories {
-        mavenLocal()
+        if (extra.properties["USE_MVN_LOCAL"] == "true") {
+            mavenLocal()
+        }
         mavenCentral()
         gradlePluginPortal()
         maven {
@@ -28,7 +29,7 @@ plugins {
 }
 
 genesis {
-    projectType = ProjectType.APPLICATION
+    projectType = APPLICATION
 
     dependencies {
         dependency("global.genesis:auth:${extra.properties["authVersion"]}")

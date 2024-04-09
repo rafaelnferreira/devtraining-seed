@@ -25,6 +25,7 @@ tables {
         TRADE_DATE
         ENTERED_BY
         TRADE_STATUS
+        FX_RATE1
 
         primaryKey {
             TRADE_ID

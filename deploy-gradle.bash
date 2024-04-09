@@ -48,6 +48,9 @@ echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
 # Patching scripts for OSX
 patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts_.patch
 
+# Sync custom scripts
+rsync -r custom/ $GENESIS_HOME
+
 genesisInstall --ignoreHooks
 
 echo y | remap --commit
