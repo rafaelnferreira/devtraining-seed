@@ -14,11 +14,13 @@ jobs:
     steps:
       - id: create-matrix
         run: |
-          echo matrix='{ "include": [] }' >> $GITHUB_OUTPUT
+          # echo matrix='{ "include": [] }' >> $GITHUB_OUTPUT
+          echo hi
 
   build:
     runs-on: ubuntu-latest
     needs: create-matrix
+    if: ${{ needs.create-matrix.outputs.matrix }}
     strategy:
       fail-fast: true
       matrix: ${{ fromJson(needs.create-matrix.outputs.matrix) }}
@@ -28,6 +30,7 @@ jobs:
   dependency:
     runs-on: ubuntu-latest
     needs: build
+    if: always() && (needs.build.result == 'skipped' || needs.build.result == 'success')
     steps:
       - run: |
           echo run after empty matrix
