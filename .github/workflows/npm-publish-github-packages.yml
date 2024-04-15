@@ -10,7 +10,7 @@ jobs:
   create-matrix:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.create-matrix.output.matrix }}
+      matrix: ${{ steps.create-matrix.outputs.matrix }}
     steps:
       - id: create-matrix
         run: |
