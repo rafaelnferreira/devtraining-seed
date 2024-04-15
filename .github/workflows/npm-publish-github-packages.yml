@@ -20,7 +20,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: create-matrix
-    if: ${{ needs.create-matrix.outputs.matrix }}
+    if: needs.create-matrix.outputs.matrix
     strategy:
       fail-fast: true
       matrix: ${{ fromJson(needs.create-matrix.outputs.matrix) }}
