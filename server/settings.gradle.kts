@@ -33,6 +33,8 @@ genesis {
 
     dependencies {
         dependency("global.genesis:auth:${extra.properties["authVersion"]}")
+        dependency("global.genesis:genesis-notify:${extra.properties["notifyVersion"]}")
+        dependency("global.genesis:file-server:${extra.properties["fileServerVersion"]}")
 
     }
 
