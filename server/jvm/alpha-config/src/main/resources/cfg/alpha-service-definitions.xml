@@ -1,18 +1,18 @@
 <!--
-!
-!   System              : Genesis Business Library
-!   Sub-System          : multi-pro-code-test Configuration
-!   Version             : 1.0
-!   Copyright           : (c) Genesis
-!   Date                : 2022-03-18
-!   Function : Provide Service Definitions Config for multi-pro-code-test.
-!
-!   Modification History
-!
+   Services defined here will define ports and hosts of processes required by the application.
+
+   New to Genesis? Take 5 minutes to learn the basics around service definitions >> https://learn.genesis.global/docs/server/configuring-runtime/service-definitions/
+
+   Else if you want to do something but are still not sure how it could be achieved? Detail your requirement on stack overflow, and let the community help >> https://stackoverflowteams.com/c/genesis-global/questions/ask?tags=service-def
+   Tip: Use the tag "service-def" and search other questions tagged "service-def" in case someone has asked the same.
 -->
+
 <configuration>
-    <service host="localhost" name="ALPHA_DATASERVER" port="11000"/>
-    <service host="localhost" name="ALPHA_EVENT_HANDLER" port="11001"/>
-    <service host="localhost" name="ALPHA_CONSOLIDATOR" port="11002" />
-    <service host="localhost" name="ALPHA_EVALUATOR" port="11003" />
+  <service host="localhost" name="TEST-NEW-DICT_DATASERVER" port="9700"/>
+  <service host="localhost" name="TEST-NEW-DICT_EVENT_HANDLER" port="9701"/>
+  <service host="localhost" name="TEST-NEW-DICT_REQUEST_SERVER" port="9702"/>
+  <service host="localhost" name="TEST-NEW-DICT_CONSOLIDATOR" port="9703"/>
+
+<!-- TODO Runtime 3. Add any new service definitions here-->
+
 </configuration>
