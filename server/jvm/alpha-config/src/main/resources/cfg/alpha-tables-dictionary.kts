@@ -13,55 +13,69 @@
 
 tables {
   table(name = "INSTRUMENT", id = 11_000, audit = details(id = 11_006, sequence = "IA")) {
-    field("INSTRUMENT_ID", LONG).autoIncrement()
-    field("SYMBOL", STRING).notNull()
+    autoIncrement(INSTRUMENT_ID)
+    INSTRUMENT_ID
+    SYMBOL
 
-    primaryKey("INSTRUMENT_ID")
+    primaryKey {
+      INSTRUMENT_ID
+    }
 
   }
   table(name = "COUNTERPARTY", id = 11_001, audit = details(id = 11_007, sequence = "CA")) {
-    field("COUNTERPARTY_ID", STRING).sequence("CP")
-    field("COUNTPERPARTY_NAME", STRING).notNull()
-
-    primaryKey("COUNTERPARTY_ID")
+   COUNTERPARTY_ID
+   COUNTPERPARTY_NAME
+    primaryKey {
+      COUNTERPARTY_ID 
+    }
 
   }
   table(name = "ORDER", id = 11_002, audit = details(id = 11_008, sequence = "OA")) {
-    field("ORDER_ID", STRING).sequence("OR")
-    field("ORDER_QUANTITY", INT).notNull()
-    field("INSTRUMENT_ID", LONG).notNull()
-    field("COUNTERPARTY_ID", STRING).notNull()
-    field("ORDER_PRICE", DOUBLE).notNull()
-    field("TICKET_SIZE", INT)
+    ORDER_ID
+    ORDER_QUANTITY
+    INSTRUMENT_ID not null
+    COUNTERPARTY_ID
+    ORDER_PRICE
+    TICKET_SIZE
 
-    primaryKey("ORDER_ID")
+    primaryKey {
+      ORDER_ID
+    }
 
   }
   table(name = "ORDER_TOTALS", id = 11_003, audit = details(id = 11_009, sequence = "OT")) {
-    field("TOTAL_QUANTITY_ORDERED", INT)
-    field("INSTRUMENT_ID", LONG).notNull()
+    TOTAL_QUANTITY_ORDERED
+    INSTRUMENT_ID
 
-    primaryKey("INSTRUMENT_ID")
+    primaryKey {
+      INSTRUMENT_ID
+    }
 
   }
   table(name = "ORDER_STATUS", id = 11_004, audit = details(id = 11_010, sequence = "OS")) {
-    field("ORDER_ID", STRING).notNull()
-    field("QUANTITY_FILLED", INT)
-    field("AVG_PRICE", DOUBLE)
+    ORDER_ID
+    QUANTITY_FILLED
+    AVG_PRICE
 
-    primaryKey("ORDER_ID")
+    primaryKey {
+      ORDER_ID
+    }
 
   }
   table(name = "TRADE", id = 11_005, audit = details(id = 11_011, sequence = "TA")) {
-    field("TRADE_ID", STRING).sequence("TR")
-    field("TRADE_QUANTITY", INT).notNull()
-    field("ORDER_ID", STRING).notNull()
-    field("TRADE_PRICE", DOUBLE).notNull()
+    TRADE_ID
+    TRADE_QUANTITY
+    ORDER_ID
+    TRADE_PRICE
 
-    primaryKey("TRADE_ID")
+    primaryKey {
+      TRADE_ID
+    }
 
     indices {
-      nonUnique("ORDER_ID")
+      nonUnique { 
+        ORDER_ID
+      }
     }
   }
 

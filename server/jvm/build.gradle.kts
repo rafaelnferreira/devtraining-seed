@@ -1,7 +1,7 @@
 ext.set("localDaogenVersion", "ALPHA")
 
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.7.10"
     `maven-publish`
     id("global.genesis.build")
 }
@@ -9,6 +9,12 @@ plugins {
 subprojects  {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.gradle.maven-publish")
+
+    configurations {
+        "compileClasspath" {
+            resolutionStrategy.force("com.github.jnr:jnr-ffi:2.2.11")
+        }
+    }
 
     dependencies {
         implementation(platform("global.genesis:genesis-bom:${properties["genesisVersion"]}"))
@@ -81,7 +87,7 @@ allprojects {
 
     kotlin {
         jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(17))
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
         }
     }
     tasks.withType<Jar> {
@@ -90,7 +96,7 @@ allprojects {
 
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(17))
+            languageVersion.set(JavaLanguageVersion.of(11))
         }
     }
 
