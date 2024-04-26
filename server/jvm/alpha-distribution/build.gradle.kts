@@ -8,6 +8,7 @@ dependencies {
     implementation(project(":alpha-eventhandler"))
     implementation(project(":alpha-messages"))
     implementation(project(":alpha-script-config"))
+    implementation(project(path = ":alpha-dictionary-cache", configuration = "codeGen"))
 }
 
 description = "alpha-distribution"
