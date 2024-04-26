@@ -1,34 +1,31 @@
 rootProject.name = "genesisproduct-alpha"
 
 pluginManagement {
-    pluginManagement {
-        val genesisVersion: String by settings
-        val deployPluginVersion: String by settings
-        plugins {
-            id("global.genesis.build") version genesisVersion
-            id("global.genesis.deploy") version deployPluginVersion
+    val genesisVersion: String by settings
+    val deployPluginVersion: String by settings
+    plugins {
+        id("global.genesis.build") version genesisVersion
+        id("global.genesis.deploy") version deployPluginVersion
+    }
+
+    repositories {
+    mavenLocal {
+        // VERY IMPORTANT!!! EXCLUDE AGRONA AS IT IS A POM DEPENDENCY AND DOES NOT PLAY NICELY WITH MAVEN LOCAL!
+        content {
+            excludeGroup("org.agrona")
         }
     }
-    repositories {
-        mavenLocal {
-            // VERY IMPORTANT!!! EXCLUDE AGRONA AS IT IS A POM DEPENDENCY AND DOES NOT PLAY NICELY WITH MAVEN LOCAL!
-            content {
-                excludeGroup("org.agrona")
-            }
-        }
-        mavenCentral()
-        gradlePluginPortal()
-        maven {
-            url = uri(extra.properties["genesisArtifactoryPath"].toString())
-            credentials {
-                username = extra.properties["genesisArtifactoryUser"].toString()
-                password = extra.properties["genesisArtifactoryPassword"].toString()
-            }
+    mavenCentral()
+    gradlePluginPortal()
+    maven {
+        url = uri(extra.properties["genesisArtifactoryPath"].toString())
+        credentials {
+            username = extra.properties["genesisArtifactoryUser"].toString()
+            password = extra.properties["genesisArtifactoryPassword"].toString()
         }
     }
 }
-
-
+}
 
 include("alpha-config")
 include("alpha-messages")

@@ -8,10 +8,10 @@
 -->
 
 <configuration>
-  <service host="localhost" name="TEST-NEW-DICT_DATASERVER" port="9700"/>
-  <service host="localhost" name="TEST-NEW-DICT_EVENT_HANDLER" port="9701"/>
-  <service host="localhost" name="TEST-NEW-DICT_REQUEST_SERVER" port="9702"/>
-  <service host="localhost" name="TEST-NEW-DICT_CONSOLIDATOR" port="9703"/>
+  <service host="localhost" name="ALPHA_DATASERVER" port="9700"/>
+  <service host="localhost" name="ALPHA_EVENT_HANDLER" port="9701"/>
+  <service host="localhost" name="ALPHA_REQUEST_SERVER" port="9702"/>
+  <service host="localhost" name="ALPHA_CONSOLIDATOR" port="9703"/>
 
 <!-- TODO Runtime 3. Add any new service definitions here-->
 
