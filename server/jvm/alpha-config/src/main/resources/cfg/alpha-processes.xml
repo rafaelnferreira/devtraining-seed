@@ -8,7 +8,7 @@
 -->
 
 <processes>
-  <process name="alpha_DATASERVER">
+  <process name="ALPHA_DATASERVER">
     <groupId>alpha</groupId>
     <start>true</start>
     <options>-Xmx256m</options>
@@ -18,10 +18,10 @@
     <description>Displays real-time details</description>
     <language>pal</language>
   </process>
-  <process name="alpha_EVENT_HANDLER">
+  <process name="ALPHA_EVENT_HANDLER">
     <groupId>alpha</groupId>
     <start>true</start>
-    <options>-Xmx256m -DRedirectStreamsToLog=true</options>
+    <options>-Xmx128m -DRedirectStreamsToLog=true</options>
     <module>genesis-pal-eventhandler</module>
     <package>global.genesis.eventhandler.pal</package>
     <script>alpha-eventhandler.kts</script>
@@ -29,20 +29,20 @@
     <classpath>alpha-eventhandler*</classpath>
     <language>pal</language>
   </process>
-  <process name="alpha_REQUEST_SERVER">
+  <process name="ALPHA_REQUEST_SERVER">
     <groupId>alpha</groupId>
     <start>true</start>
-    <options>-Xmx256m</options>
+    <options>-Xmx128m</options>
     <module>genesis-pal-requestserver</module>
     <package>global.genesis.requestreply.pal</package>
     <script>alpha-reqrep.kts</script>
     <description>Server one-shot requests for details</description>
     <language>pal</language>
   </process>
-  <process name="alpha_CONSOLIDATOR">
+  <process name="ALPHA_CONSOLIDATOR">
     <groupId>alpha</groupId>
     <start>true</start>
-    <options>-Xmx256m -DRedirectStreamsToLog=true</options>
+    <options>-Xmx128m -DRedirectStreamsToLog=true</options>
     <module>genesis-pal-consolidator</module>
     <package>global.genesis.pal.consolidator</package>
     <script>alpha-consolidator.kts</script>
