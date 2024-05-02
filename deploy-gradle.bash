@@ -43,6 +43,7 @@ echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
 
 ./gradlew :server:alpha-app:install-auth-distribution.zip \
  :server:alpha-app:install-alpha-site-specific-1.0.0-SNAPSHOT-bin-distribution.zip \
+ :server:alpha-app:install-file-server-distribution.zip \
  :server:alpha-app:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
 
 # Patching scripts for OSX
@@ -53,11 +54,7 @@ rsync -r custom/ $GENESIS_HOME
 
 genesisInstall --ignoreHooks
 
-echo y | remap --commit
-
-# SendIt
-
-#./gradlew $(./gradlew :server:alpha-app:tasks | grep SendIt- | cut -d' ' -f1 | awk '{print ":server:alpha-app:"$1}' | paste -s -d ' ' - )
+echo "y\ny" | remap --commit --dataLoad
 
 stop_spinner
 

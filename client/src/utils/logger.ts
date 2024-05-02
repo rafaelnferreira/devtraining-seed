@@ -1,2 +1,3 @@
-import { createLogger } from '@genesislcap/foundation-utils';
-export const logger = createLogger('blank-app');
+import { createLogger } from '@genesislcap/foundation-logger';
+
+export const logger = createLogger('tomapp-root');

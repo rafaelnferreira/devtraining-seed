@@ -16,11 +16,253 @@
     }
   },
   "pkgScope": "genesislcap",
+  "directory": "devtraining-seed",
   "pkgName": "alpha",
   "dsName": "alpha",
   "baseDsPackage": "@genesislcap/foundation-ui",
   "apiHost": "ws://localhost:8080/gwf",
   "groupId": "global.genesis",
   "applicationVersion": "1.0.0-SNAPSHOT",
-  "localGenId": "ALPHA"
+  "localGenId": "ALPHA",
+  "additions": [
+    {
+      "appName": "devtraining-seed",
+      "appSeed": {
+        "type": "remote",
+        "name": "pbc-documents-seed",
+        "artifact": "@genesislcap/pbc-documents-seed",
+        "ref": "latest",
+        "date": "2024-05-01T07:05:23.836Z"
+      },
+      "pkgScope": "genesislcap",
+      "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+      "pkgName": "devtraining-seed",
+      "dsName": "alpha",
+      "baseDsPackage": "@genesislcap/foundation-ui",
+      "apiHost": "ws://localhost:8080/gwf",
+      "groupId": "global.genesis",
+      "applicationVersion": "1.0.0-SNAPSHOT",
+      "localGenId": "ALPHA",
+      "date": "Wed May 01 2024 08:05:23 GMT+0100 (British Summer Time)",
+      "utils": {
+        "changeCase": {}
+      },
+      "versions": {
+        "prerequisites": {
+          "foundationUI": "14.*",
+          "gsf": "7.*"
+        },
+        "dependencies": {
+          "pbcDocuments": "0.0.10",
+          "serverDepId": "7.2.0"
+        }
+      }
+    },
+    {
+      "appName": "devtraining-seed",
+      "appSeed": {
+        "type": "remote",
+        "name": "pbc-auth-seed",
+        "artifact": "@genesislcap/pbc-auth-seed",
+        "ref": "latest",
+        "date": "2024-05-01T07:06:33.988Z"
+      },
+      "pkgScope": "genesislcap",
+      "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+      "pkgName": "devtraining-seed",
+      "dsName": "alpha",
+      "baseDsPackage": "@genesislcap/foundation-ui",
+      "apiHost": "ws://localhost:8080/gwf",
+      "groupId": "global.genesis",
+      "applicationVersion": "1.0.0-SNAPSHOT",
+      "localGenId": "ALPHA",
+      "additions": [
+        {
+          "appName": "devtraining-seed",
+          "appSeed": {
+            "type": "remote",
+            "name": "pbc-documents-seed",
+            "artifact": "@genesislcap/pbc-documents-seed",
+            "ref": "latest",
+            "date": "2024-05-01T07:05:23.836Z"
+          },
+          "pkgScope": "genesislcap",
+          "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+          "pkgName": "devtraining-seed",
+          "dsName": "alpha",
+          "baseDsPackage": "@genesislcap/foundation-ui",
+          "apiHost": "ws://localhost:8080/gwf",
+          "groupId": "global.genesis",
+          "applicationVersion": "1.0.0-SNAPSHOT",
+          "localGenId": "ALPHA",
+          "date": "Wed May 01 2024 08:05:23 GMT+0100 (British Summer Time)",
+          "utils": {
+            "changeCase": {}
+          },
+          "versions": {
+            "prerequisites": {
+              "foundationUI": "14.*",
+              "gsf": "7.*"
+            },
+            "dependencies": {
+              "pbcDocuments": "0.0.10",
+              "serverDepId": "7.2.0"
+            }
+          }
+        }
+      ],
+      "date": "Wed May 01 2024 08:06:33 GMT+0100 (British Summer Time)",
+      "utils": {
+        "changeCase": {}
+      },
+      "versions": {
+        "prerequisites": {
+          "foundationUI": "14.*",
+          "gsf": "7.*"
+        },
+        "dependencies": {
+          "authClientVersion": "1.0.4",
+          "authServerVersion": "7.2.0"
+        }
+      }
+    },
+    {
+      "appName": "devtraining-seed",
+      "appSeed": {
+        "type": "remote",
+        "name": "pbc-reporting-seed",
+        "artifact": "@genesislcap/pbc-reporting-seed",
+        "ref": "latest",
+        "date": "2024-05-02T12:44:03.019Z"
+      },
+      "pkgScope": "genesislcap",
+      "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+      "pkgName": "devtraining-seed",
+      "dsName": "alpha",
+      "baseDsPackage": "@genesislcap/foundation-ui",
+      "apiHost": "ws://localhost:8080/gwf",
+      "groupId": "global.genesis",
+      "applicationVersion": "1.0.0-SNAPSHOT",
+      "localGenId": "ALPHA",
+      "additions": [
+        {
+          "appName": "devtraining-seed",
+          "appSeed": {
+            "type": "remote",
+            "name": "pbc-documents-seed",
+            "artifact": "@genesislcap/pbc-documents-seed",
+            "ref": "latest",
+            "date": "2024-05-01T07:05:23.836Z"
+          },
+          "pkgScope": "genesislcap",
+          "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+          "pkgName": "devtraining-seed",
+          "dsName": "alpha",
+          "baseDsPackage": "@genesislcap/foundation-ui",
+          "apiHost": "ws://localhost:8080/gwf",
+          "groupId": "global.genesis",
+          "applicationVersion": "1.0.0-SNAPSHOT",
+          "localGenId": "ALPHA",
+          "date": "Wed May 01 2024 08:05:23 GMT+0100 (British Summer Time)",
+          "utils": {
+            "changeCase": {}
+          },
+          "versions": {
+            "prerequisites": {
+              "foundationUI": "14.*",
+              "gsf": "7.*"
+            },
+            "dependencies": {
+              "pbcDocuments": "0.0.10",
+              "serverDepId": "7.2.0"
+            }
+          }
+        },
+        {
+          "appName": "devtraining-seed",
+          "appSeed": {
+            "type": "remote",
+            "name": "pbc-auth-seed",
+            "artifact": "@genesislcap/pbc-auth-seed",
+            "ref": "latest",
+            "date": "2024-05-01T07:06:33.988Z"
+          },
+          "pkgScope": "genesislcap",
+          "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+          "pkgName": "devtraining-seed",
+          "dsName": "alpha",
+          "baseDsPackage": "@genesislcap/foundation-ui",
+          "apiHost": "ws://localhost:8080/gwf",
+          "groupId": "global.genesis",
+          "applicationVersion": "1.0.0-SNAPSHOT",
+          "localGenId": "ALPHA",
+          "additions": [
+            {
+              "appName": "devtraining-seed",
+              "appSeed": {
+                "type": "remote",
+                "name": "pbc-documents-seed",
+                "artifact": "@genesislcap/pbc-documents-seed",
+                "ref": "latest",
+                "date": "2024-05-01T07:05:23.836Z"
+              },
+              "pkgScope": "genesislcap",
+              "directory": "/Users/rafaelferreira/workspace/devtraining-seed",
+              "pkgName": "devtraining-seed",
+              "dsName": "alpha",
+              "baseDsPackage": "@genesislcap/foundation-ui",
+              "apiHost": "ws://localhost:8080/gwf",
+              "groupId": "global.genesis",
+              "applicationVersion": "1.0.0-SNAPSHOT",
+              "localGenId": "ALPHA",
+              "date": "Wed May 01 2024 08:05:23 GMT+0100 (British Summer Time)",
+              "utils": {
+                "changeCase": {}
+              },
+              "versions": {
+                "prerequisites": {
+                  "foundationUI": "14.*",
+                  "gsf": "7.*"
+                },
+                "dependencies": {
+                  "pbcDocuments": "0.0.10",
+                  "serverDepId": "7.2.0"
+                }
+              }
+            }
+          ],
+          "date": "Wed May 01 2024 08:06:33 GMT+0100 (British Summer Time)",
+          "utils": {
+            "changeCase": {}
+          },
+          "versions": {
+            "prerequisites": {
+              "foundationUI": "14.*",
+              "gsf": "7.*"
+            },
+            "dependencies": {
+              "authClientVersion": "1.0.4",
+              "authServerVersion": "7.2.0"
+            }
+          }
+        }
+      ],
+      "reportingQueries": [],
+      "date": "Thu May 02 2024 13:44:08 GMT+0100 (British Summer Time)",
+      "utils": {
+        "changeCase": {}
+      },
+      "versions": {
+        "prerequisites": {
+          "foundationUI": "14.*",
+          "gsf": "7.*"
+        },
+        "dependencies": {
+          "pbcReporting": "1.0.6",
+          "serverDepId": "7.2.0"
+        }
+      },
+      "reportingQueriesKotlin": ""
+    }
+  ]
 }

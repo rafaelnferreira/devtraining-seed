@@ -2,3 +2,7 @@ USER_NAME,RIGHT_CODE
 JohnDoe,CAPTURE_TRADE
 JaneDee,CAPTURE_TRADE
 genesis,APPROVE_TRADE
+genesis,FileStorageView
+genesis,FileStorageUpload
+genesis,FileStorageDownload
+genesis,FileStorageAdminAction

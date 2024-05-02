@@ -32,9 +32,10 @@ genesis {
     projectType = APPLICATION
 
     dependencies {
+        dependency("global.genesis:reporting:${extra.properties["reportingVersion"]}")
         dependency("global.genesis:auth:${extra.properties["authVersion"]}")
         dependency("global.genesis:genesis-notify:${extra.properties["notifyVersion"]}")
-        dependency("global.genesis:file-server:${extra.properties["fileServerVersion"]}")
+        dependency("global.genesis:file-server:${extra.properties["file-serverVersion"]}")
 
     }
 

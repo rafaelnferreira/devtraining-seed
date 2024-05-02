@@ -1,7 +1,7 @@
 import { Connect, ConnectConfig, defaultConnectConfig } from '@genesislcap/foundation-comms';
 import { Navigation } from '@genesislcap/foundation-header';
 import { baseLayerLuminance, StandardLuminance } from '@microsoft/fast-components';
-import { FASTElement, customElement, observable } from '@microsoft/fast-element';
+import { FASTElement, customElement, observable, DOM } from '@microsoft/fast-element';
 import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { DefaultRouteRecognizer } from '@microsoft/fast-router';
 import { DynamicTemplate as template, LoadingTemplate, MainTemplate } from './main.template';
@@ -9,6 +9,12 @@ import { MainStyles as styles } from './main.styles';
 import { MainRouterConfig } from '../routes';
 import * as Components from '../components';
 import { logger } from '../utils';
+import { importPBCAssets } from '@genesislcap/foundation-shell/pbc';
+import { App } from '@genesislcap/foundation-shell/app';
+import { configureDesignSystem } from '@genesislcap/foundation-ui';
+import designTokens from '../styles/design-tokens.json';
+import { Store, StoreEventDetailMap } from '../store';
+
 
 const name = 'blank-app';
 
@@ -24,25 +30,49 @@ const hostUrl = API_HOST || `wss://${hostEnv}/gwf/`;
   styles,
 })
 export class MainApplication extends FASTElement {
+  
   @inject(MainRouterConfig) config!: MainRouterConfig;
   @inject(Navigation) navigation!: Navigation;
+  
+  @App app: App;
   @Connect connect!: Connect;
   @Container container!: Container;
+  @Store store: Store;
   @observable provider!: any;
   @observable ready: boolean = false;
   @observable data: any = null;
 
   async connectedCallback() {
-    super.connectedCallback();
-
-    logger.debug(`${name} is now connected to the DOM`);
-
     this.registerDIDependencies();
+    super.connectedCallback();
+    this.addEventListeners();
+    this.readyStore();
+    await this.loadPBCs();
     await this.loadRemotes();
+    DOM.queueUpdate(() => {
+      configureDesignSystem(this.provider, designTokens);
+    });
+  }
+
+  async loadPBCs() {
+    /**
+     * Import PBC assets that may have been added to the ./pbc directory by genx or by hand
+     */
+    const pbcAssets = await importPBCAssets();
+    /**
+     * Register bulk assets
+     */
+    this.app.registerAssets(pbcAssets);
+    /**
+     * Register the top-level route collection
+     */
+    this.app.registerRouteCollection(this.config.routes);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    this.removeEventListeners();
+    this.disconnectStore();
   }
 
   onDarkModeToggle() {
@@ -55,11 +85,8 @@ export class MainApplication extends FASTElement {
   }
 
   async loadRemotes() {
-    await Components.loadRemotes();
-    /**
-     * Simulate loading delay
-     * await new Promise(resolve => setTimeout(resolve, 3000));
-     */
+    const { registerComponents } = Components;
+    await registerComponents();
     this.ready = true;
   }
 
@@ -69,10 +96,6 @@ export class MainApplication extends FASTElement {
    */
   public selectTemplate() {
     return this.ready ? MainTemplate : LoadingTemplate;
-  }
-
-  public handleDoingSomething(detail: any) {
-    logger.debug(`handleDoingSomething in main ${detail}`);
   }
 
   private registerDIDependencies() {
@@ -96,7 +119,31 @@ export class MainApplication extends FASTElement {
           ...defaultConnectConfig.connect,
           heartbeatInterval: 15_000,
         },
-      })
+      }),
+      /**
+       * // example of setting grid options for all grids from app level
+       * Registration.instance<GridOptionsConfig>(GridOptionsConfig, {
+       *  defaultCsvExportParams: csvExportParams,
+       * }),
+       */
     );
+  }
+
+  protected addEventListeners() {
+    this.addEventListener('store-connected', this.store.onConnected);
+  }
+
+  protected removeEventListeners() {
+    this.removeEventListener('store-connected', this.store.onConnected);
+  }
+
+  protected readyStore() {
+    // @ts-ignore
+    this.$emit('store-connected', this);
+    this.$emit('store-ready', true);
+  }
+
+  protected disconnectStore() {
+    this.$emit('store-disconnected');
   }
 }
