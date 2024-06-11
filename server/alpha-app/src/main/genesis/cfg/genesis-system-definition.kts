@@ -14,6 +14,7 @@ systemDefinition {
         item(name = "MetricsReportType", value = "SLF4J")
         item(name = "ZeroMQProxyInboundPort", value = "5001")
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
+        item(name = "ZeroMQConnectToLocalhostViaLoopback", value = "true")
         item(name = "GenesisKey", value = "aB3cDeF7gHiJkLmN9oPqRs1tUvWxYz21")
         
         // postgres

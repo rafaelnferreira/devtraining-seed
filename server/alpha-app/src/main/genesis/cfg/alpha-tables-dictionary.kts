@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.analysis.decompiler.stub.flags.VALUE_CLASS
-
 /**
  * System              : Genesis Business Library
  * Sub-System          : multi-pro-code-test Configuration
@@ -112,6 +110,12 @@ tables {
         primaryKey {
             TRADE_ID_INT
         }       
+    }
+
+    table( name = "LEGAL_ENTITY", id = 2006) {
+        field("ID", INT).autoIncrement().primaryKey()
+        field("NAME", STRING)
+        field("COUNTRY_CODE", STRING(2))
     }
 
 }

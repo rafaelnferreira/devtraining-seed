@@ -43,7 +43,6 @@ echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
 
 ./gradlew :server:alpha-app:install-auth-distribution.zip \
  :server:alpha-app:install-alpha-site-specific-1.0.0-SNAPSHOT-bin-distribution.zip \
- :server:alpha-app:install-file-server-distribution.zip \
  :server:alpha-app:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
 
 # Patching scripts for OSX
@@ -52,9 +51,14 @@ patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts_.patch
 # Sync custom scripts
 rsync -r custom/ $GENESIS_HOME
 
+# Install without calling hooks
 genesisInstall --ignoreHooks
 
+# Remap and data import
 echo "y\ny" | remap --commit --dataLoad
+
+# Pre compiling scripts so the heap requirements are lower, issues are caught earlier and boostrap is quicker
+preCompileScripts
 
 stop_spinner
 
