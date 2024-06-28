@@ -46,7 +46,7 @@ echo -e "Deploying to ${GREEN}$GENESIS_HOME${NC}"
  :server:alpha-app:install-genesisproduct-alpha-1.0.0-SNAPSHOT-bin-distribution.zip
 
 # Patching scripts for OSX
-patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts_.patch
+patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts.patch
 
 # Sync custom scripts
 rsync -r custom/ $GENESIS_HOME
@@ -55,7 +55,7 @@ rsync -r custom/ $GENESIS_HOME
 genesisInstall --ignoreHooks
 
 # Remap and data import
-echo "y\ny" | remap --commit --dataLoad
+echo "y\ny\ny" | remap --commit --dataLoad
 
 # Pre compiling scripts so the heap requirements are lower, issues are caught earlier and boostrap is quicker
 preCompileScripts

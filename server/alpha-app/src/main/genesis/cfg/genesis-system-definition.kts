@@ -16,6 +16,9 @@ systemDefinition {
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
         item(name = "ZeroMQConnectToLocalhostViaLoopback", value = "true")
         item(name = "GenesisKey", value = "aB3cDeF7gHiJkLmN9oPqRs1tUvWxYz21")
+
+        // Consul as servicy registrar
+        // item(name = "ClusterMode", value = "CONSUL")
         
         // postgres
         item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")
