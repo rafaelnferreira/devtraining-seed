@@ -21,9 +21,6 @@ const name = 'blank-app';
 // eslint-disable-next-line
 declare var API_HOST: string;
 
-const hostEnv = location.host;
-const hostUrl = API_HOST || `wss://${hostEnv}/gwf/`;
-
 @customElement({
   name,
   template,

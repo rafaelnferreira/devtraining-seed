@@ -40,7 +40,7 @@ export class MainRouterConfig extends FoundationRouterConfiguration<LoginSetting
     this.title = 'Developer Training';
     this.defaultLayout = defaultLayout;
 
-    const authPath = 'login';
+    const authPath = 'APP/9064/login';
 
     this.routes.map(
       { path: '', redirect: authPath },
@@ -72,7 +72,7 @@ export class MainRouterConfig extends FoundationRouterConfiguration<LoginSetting
       },
       { path: 'not-found', element: NotFound, title: 'Not Found', name: 'not-found' },
       {
-        path: 'home',
+        path: 'APP/9064/home',
         element: Home,
         title: 'Home',
         name: 'home',

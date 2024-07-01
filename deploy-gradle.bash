@@ -52,7 +52,7 @@ patch -ruN -d $GENESIS_HOME < OSX_Changes_to_unix_scripts.patch
 rsync -r custom/ $GENESIS_HOME
 
 # Install without calling hooks
-genesisInstall --ignoreHooks
+genesisInstall --ignoreHooks --compactProcesses --compactProcessesStrategy=DEV
 
 # Remap and data import
 echo "y\ny\ny" | remap --commit --dataLoad
