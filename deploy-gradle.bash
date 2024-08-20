@@ -55,7 +55,7 @@ rsync -r custom/ $GENESIS_HOME
 genesisInstall --ignoreHooks
 
 # Remap and data import
-echo "y\ny\ny" | remap --commit --dataLoad
+remap --commit --dataLoad
 
 # Pre compiling scripts so the heap requirements are lower, issues are caught earlier and boostrap is quicker
 preCompileScripts

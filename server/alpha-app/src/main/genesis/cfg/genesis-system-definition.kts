@@ -16,19 +16,23 @@ systemDefinition {
         item(name = "ZeroMQProxyOutboundPort", value = "5000")
         item(name = "ZeroMQConnectToLocalhostViaLoopback", value = "true")
         item(name = "GenesisKey", value = "aB3cDeF7gHiJkLmN9oPqRs1tUvWxYz21")
+        item(name = "RemapEnableAutoConfirm", value = "true")
 
-        // Consul as servicy registrar
+        // Consul as service registrar
         // item(name = "ClusterMode", value = "CONSUL")
         
         // postgres
-        item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")
+        //item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")
         
         // oracle
         //item(name = "DbHost", value = "jdbc:oracle:thin:system/Hoothoot1@localhost:1521/XE")
 
         // sql server
         //item(name = "DbHost", value = "jdbc:sqlserver://localhost:1433;trustServerCertificate=true;username=SA;password=Rootroot1")
-        
+
+        // h2
+        item(name = "DbHost", value = "jdbc:h2:file:~/genesis-local-db/alpha/h2/test;DB_CLOSE_DELAY=-1;NON_KEYWORDS=VALUE,KEY;AUTO_SERVER=TRUE")
+
         item(name = "DbMode", value = "VANILLA")
         item(name = "GenesisNetProtocol", value = "V2")
         item(name = "ResourcePollerTimeout", value = "5")
@@ -53,7 +57,8 @@ systemDefinition {
                 host(LOCAL_HOST)
             }
 
-            item(name = "DbNamespace", value = "alpha")
+            item(name = "DbNamespace", value = "alpha1")
+            item(name = "PrimaryIfSingleNode", value = "true")
             item(name = "ClusterPort", value = "6000")
             item(name = "location", value = "LO")
             item(name = "LogFramework", value = "LOG4J2")
