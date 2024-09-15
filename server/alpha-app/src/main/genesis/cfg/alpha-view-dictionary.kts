@@ -13,11 +13,11 @@ views {
     view("TRADE_VIEW", TRADE) {
 
         joins {
-            joining(INSTRUMENT) {
+            joining(INSTRUMENT, backwardsJoin = true) {
                 on(TRADE.INSTRUMENT_ID to INSTRUMENT { INSTRUMENT_ID })
             }
 
-            joining(COUNTERPARTY) {
+            joining(COUNTERPARTY, backwardsJoin = true) {
                 on(TRADE.COUNTERPARTY_ID to COUNTERPARTY { COUNTERPARTY_ID })
             }
         }

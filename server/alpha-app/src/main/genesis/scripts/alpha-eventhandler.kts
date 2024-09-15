@@ -175,5 +175,15 @@ eventHandler {
         }
     }
 
+    eventHandler<ExternalTrade>(name = "EXTERNAL_TRADE_INSERT") {
+        onCommit { event ->
+            val trade = event.details
+            trade.enteredBy = event.userName
+            trade.tradeDate = now()
+            entityDb.insert(trade)
+            ack()
+        }
+    }
+
 
 }

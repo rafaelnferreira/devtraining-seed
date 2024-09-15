@@ -21,6 +21,7 @@ pluginManagement {
                 password = extra.properties["genesisArtifactoryPassword"].toString()
             }
         }
+        google()
     }
 }
 

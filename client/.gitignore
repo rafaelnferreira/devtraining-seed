@@ -23,6 +23,8 @@ coverage.lcov
 # Optional npm cache directory
 .npm
 
+.bootstrapDone
+
 # Optional eslint cache
 .eslintcache
 
