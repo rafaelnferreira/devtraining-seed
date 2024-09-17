@@ -9,11 +9,22 @@ on:
         default: false
 
 jobs:
-  job-1:
+  
+  sub-1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo job 1
-  job-2:
+      - run: |
+          if [ "1" == "$ATTEMPT" ] ; then
+            echo it will fail on first attempt
+            exit 1
+          fi
+
+          echo job completed
+
+        env:
+          ATTEMPT: ${{ github.run_attempt }}
+      
+  sub-2:
     if: inputs.run-second-job
     runs-on: ubuntu-latest
     steps:
