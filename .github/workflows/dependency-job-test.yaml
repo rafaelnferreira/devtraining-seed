@@ -1,0 +1,13 @@
+name: Skip dependency job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job-1:
+    uses: ./.github/workflows/sub-workflow-test.yaml
+  job-2:
+    needs: job-1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo main job 2

@@ -1,0 +1,20 @@
+name: Test subworkflow
+
+on:
+  workflow_call:
+    inputs:
+      run-second-job:
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job 1
+  job-2:
+    if: inputs.run-second-job
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job 2
