@@ -6,8 +6,22 @@ on:
 jobs:
   job-1:
     uses: ./.github/workflows/sub-workflow-test.yaml
+
   job-2:
     needs: job-1
     runs-on: ubuntu-latest
     steps:
       - run: echo main job 2
+
+  job-3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo main job 3
+  
+  job-4:
+    runs-on: ubuntu-latest
+    needs:
+      - job-2
+      - job-3
+    steps:
+      - run: echo main job 4
