@@ -47,6 +47,7 @@ systemDefinition {
         item(name = "MetadataChronicleMapAverageValueSizeBytes", value = "1024")
         item(name = "MetadataChronicleMapEntriesCount", value = "512")
         item(name = "DaemonServerPort", value = "4568")
+        item(name = "DaemonHealthPort", value = "4569")
         item(name = "DbSqlConnectionPoolSize", value = "4")
         item(
             name = "JVM_OPTIONS",
