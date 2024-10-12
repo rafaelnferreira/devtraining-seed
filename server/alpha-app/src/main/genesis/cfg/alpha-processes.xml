@@ -67,4 +67,14 @@
         <description>Dynamic/time rules engine</description>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
     </process>
+    <process name="ALPHA_DATAPIPELINES">
+        <groupId>ALPHA</groupId>
+        <start>true</start>
+        <options>-Xmx256m -DXSD_VALIDATE=false</options>
+        <module>genesis-pal-datapipeline</module>
+        <package>global.genesis.pipeline</package>
+        <script>alpha-data-pipelines.kts</script>
+        <description>Management of data pipelines</description>
+        <language>pal</language>
+      </process>
 </processes>

@@ -113,7 +113,7 @@ tables {
     }
 
     table( name = "LEGAL_ENTITY", id = 2006) {
-        field("ID", INT).autoIncrement().primaryKey()
+        field("ID", LONG).autoIncrement().primaryKey()
         field("NAME", STRING)
         field("COUNTRY_CODE", STRING(2))
     }
