@@ -69,7 +69,7 @@ systemDefinition {
             item(name = "ClusterPort", value = "6000")
             item(name = "location", value = "LO")
             item(name = "LogFramework", value = "LOG4J2")
-            item(name = "LogFrameworkConfig", value = "log4j2-default.xml")
+            item(name = "LogFrameworkConfig", value = "log4j2-dev.xml")
         }
 
     }

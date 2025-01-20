@@ -11,7 +11,7 @@ description = "alpha-app"
 sourceSets {
     main {
         resources {
-            srcDirs("src/main/resources", "src/main/genesis")
+            srcDirs("src/main/resources", "src/main/genesis", "src/main/charlie")
         }
     }
 }

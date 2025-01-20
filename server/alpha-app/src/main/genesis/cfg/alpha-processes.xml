@@ -28,7 +28,7 @@
         <options>-Xmx256m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5105</options>
         <module>genesis-pal-eventhandler</module>
         <package>global.genesis.eventhandler.pal,global.genesis.eventhandler,mycompany</package>
-        <script>alpha-eventhandler.kts</script>
+        <script>alpha-eventhandler.kts,charlie-eventhandler.kts</script>
         <description>Handles events</description>
         <language>pal</language>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
