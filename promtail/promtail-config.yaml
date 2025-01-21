@@ -1,0 +1,311 @@
+server:
+  http_listen_port: 9101
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: "genesis_metrics"
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: "genesis_metrics"
+          __path__: /mnt/logs/*.log.metrics
+    pipeline_stages:
+      - regex:
+          expression: '^(?P<timestamp>\d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2}\.\d{3}).* - (?P<metric_name>[^\{]+)\{(?P<labels>[^}]*)\} (value|throughput)=(?P<value>\d+(\.\d+)?)'
+      - regex:
+          expression: '(processName)=(?P<process_name>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(groupName)=(?P<group_name>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(query_name)=(?P<query_name>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(topic)=(?P<topic>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(dataserver)=(?P<dataserver>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(hostname)=(?P<hostname>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(listener_name)=(?P<listener_name>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(action)=(?P<action>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(cause)=(?P<cause>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(gc)=(?P<gc>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(pal_data_server)=(?P<pal_data_server>[^,}]+)'
+          source: labels
+      - regex:
+          expression: '(users)=(?P<users>[^,}]+)'
+          source: labels
+      - labels:
+          process_name:
+          metric_name:
+          group_name:
+          hostname:
+      - labeldrop:
+        - filename
+      
+      # jvm metrics
+
+      - match:
+          selector: '{metric_name="jvm.buffer.count"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - metrics:
+                jvm_buffer_count:
+                  description: "Number of JVM buffers"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+      - match:
+          selector: '{metric_name="jvm.buffer.memory.used"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - metrics:
+                jvm_buffer_memory_used:
+                  description: "Memory used by JVM buffers "
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+      - match:
+          selector: '{metric_name="jvm.buffer.total.capacity"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - metrics:
+                jvm_buffer_total_capacity:
+                  description: "Total capacity of JVM buffers "
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+      - match:
+          selector: '{metric_name="jvm.gc.live.data.size"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - metrics:
+                jvm_gc_live_data_size:
+                  description: "Live data size in JVM garbage collection "
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+      - match:
+          selector: '{metric_name="jvm.gc.max.data.size"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - metrics:
+                jvm_gc_max_data_size:
+                  description: "Maximum data size in JVM garbage collection"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+      - match:
+          selector: '{metric_name="jvm.gc.pause"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                action:
+                cause:
+                gc:
+            - metrics:
+                jvm_gc_pause:
+                  description: "Pause time and rate for JVM garbage collection"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+
+    # Database
+
+      - match:
+          selector: '{metric_name="database.query.record_count"}'
+          stages:    
+          - labeldrop:
+            - metric_name
+          - labels:
+              query_name:
+          - metrics:
+              database_query_record_count:
+                description: "Record count in the database"
+                type: Gauge
+                source: value
+                config:
+                  action: set      
+
+    
+      - match:
+          selector: '{metric_name="database.connection_pool.available_connections"}'
+          stages:    
+          - labeldrop:
+            - metric_name
+          - metrics:
+              database_connection_pool_available_connections:
+                description: "Number of available connections in the DB pool"
+                type: Gauge
+                source: value
+                config:
+                  action: set
+
+      - match:
+          selector: '{metric_name="database.query.latency"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                query_name: 
+            - metrics:
+                database_query_latency:
+                  description: "Latency of database queries"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+      
+      # Update queue
+
+      - match:
+          selector: '{metric_name="update_queue.message_rate"}'
+          stages:    
+          - labeldrop:
+            - metric_name
+          - labels:
+              topic:
+          - metrics:
+              update_queue_message_rate:
+                description: "Rate of messages being processed in the update queue per second "
+                type: Gauge
+                source: value
+                config:
+                  action: set
+      
+      - match:
+          selector: '{metric_name="update_queue.outstanding_count"}'
+          stages:    
+          - labeldrop:
+            - metric_name
+          - labels:
+              topic:
+          - metrics:
+              update_queue_outstanding_count:
+                description: "Pending messages to be flushed in the update queue"
+                type: Gauge
+                source: value
+                config:
+                  action: set
+
+      - match:
+          selector: '{metric_name="update_queue.listener.message_rate"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                topic:
+                listener_name:
+            - metrics:
+                update_queue_listener_message_rate:
+                  description: "Rate of messages processed by the update queue listener"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set      
+      
+      - match:
+          selector: '{metric_name="update_queue.listener.overflow"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                topic:
+            - metrics:
+                update_queue_listener_overflow:
+                  description: "Rate of messages that have overflow the listener"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+  
+      # Dataserver
+
+      - match:
+          selector: '{metric_name="user_count"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                dataserver:
+            - metrics:
+                dataserver_user_count:
+                  description: "Count of users subscribing to a given dataserver resource"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+      - match:
+          selector: '{metric_name="data_logon.count"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                pal_data_server:
+                users:
+            - metrics:
+                dataserver_data_logon_count:
+                  description: "Count of data logon events per second"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
+
+
+      # Router
+
+      - match:
+          selector: '{metric_name="active_connections"}'
+          stages:
+            - labeldrop:
+                - metric_name
+            - labels:
+                group_name:
+                hostname:
+                process_name:
+            - metrics:
+                router_active_connections:
+                  description: "Number of router active connections"
+                  type: Gauge
+                  source: value
+                  config:
+                    action: set
