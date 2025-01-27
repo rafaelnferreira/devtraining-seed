@@ -118,4 +118,16 @@ tables {
         field("COUNTRY_CODE", STRING(2))
     }
 
+    table( name = "TX_EVENT", id = 2007) {
+        field("ID", LONG).autoIncrement().primaryKey()
+        field("EVENT_TYPE", STRING)
+        field("EVENT_STATUS", ENUM("PENDING", "CONSUMED", "FAILED"))
+        field("EVENT_BLOB", RAW)
+        field("DEQUEUE_COUNT", SHORT)
+
+        indices {
+            nonUnique("EVENT_TYPE", "EVENT_STATUS")
+        }
+    }
+
 }

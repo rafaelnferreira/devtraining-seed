@@ -4,6 +4,9 @@ dependencies {
 
     testImplementation("global.genesis:genesis-testsupport")
     testImplementation("global.genesis:genesis-dbtest")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+
 }
 
 description = "alpha-app"
