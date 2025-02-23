@@ -1,5 +1,7 @@
 # Root and server specific
 
+.kotlin
+
 # Logs
 logs
 *.log

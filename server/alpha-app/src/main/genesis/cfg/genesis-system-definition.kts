@@ -7,7 +7,9 @@ systemDefinition {
         item(name = "MqLayer", value = "ZeroMQ")
         item(name = "JmsUsername", value = "artemis")
         item(name = "JmsPassword", value = "fd47076f2ae8975f853e95a4bac6de787ec39d05095d3f87d48558a77e5a4d3f", encrypted = true)
-        
+
+        item(name = "UpdateQueueIntegration", value = "true")
+
         // item(name = "DbLayer", value = "FDB")
         item(name = "DbLayer", value = "SQL")
         
