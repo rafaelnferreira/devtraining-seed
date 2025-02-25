@@ -9,6 +9,7 @@ import global.genesis.message.core.event.Event;
 import global.genesis.message.core.event.EventReply;
 import io.reactivex.rxjava3.disposables.Disposable;
 import mycompany.events.ExtTradeSync;
+import mycompany.integration.UpdateMessageListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +23,7 @@ public class EventExtTradeRxHandlerSync implements SyncEventHandler<ExtTradeSync
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Inject
-    public EventExtTradeRxHandlerSync(RxEntityDb db) {
+    public EventExtTradeRxHandlerSync(RxEntityDb db, UpdateMessageListener listener) {
         this.db = db;
     }
 

@@ -46,6 +46,8 @@ genesis {
         if (extra.properties["file-serverVersion"] != null) {
             dependency("global.genesis:file-server:${extra.properties["file-serverVersion"]}")
         }
+
+        dependency("global.genesis:pbc-coexist:1.0.0-SNAPSHOT")
     }
 
     plugins {

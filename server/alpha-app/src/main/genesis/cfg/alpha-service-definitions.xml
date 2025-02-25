@@ -17,4 +17,6 @@
     <service host="localhost" name="ALPHA_EVALUATOR" port="11003" />
     <service host="localhost" name="ALPHA_REQUEST_SERVER" port="11004" />
     <service host="localhost" name="ALPHA_DATAPIPELINES" port="11005" />
+    <service host="localhost" name="ALPHA_EXT_DATASERVER" port="11006"/>
+    <service host="localhost" name="ALPHA_INTEGRATION_HANDLER" port="11007"/>
 </configuration>

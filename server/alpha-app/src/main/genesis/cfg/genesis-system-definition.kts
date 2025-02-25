@@ -24,7 +24,7 @@ systemDefinition {
         item(name = "RemapEnableAutoConfirm", value = "true")
 
         // Consul as service registrar
-        // item(name = "ClusterMode", value = "CONSUL")
+        item(name = "ClusterMode", value = "CONSUL")
         
         // postgres
         item(name = "DbHost", value = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres")

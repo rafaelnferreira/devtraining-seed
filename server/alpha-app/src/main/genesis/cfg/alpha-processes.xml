@@ -22,6 +22,18 @@
         <language>pal</language>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
     </process>
+    <process name="ALPHA_EXT_DATASERVER">
+        <groupId>ALPHA</groupId>
+        <start>true</start>
+        <options>-Xmx1024m -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5108</options>
+        <module>genesis-pal-dataserver</module>
+        <package>global.genesis.dataserver.pal</package>
+        <script>alpha-ext-dataserver.kts</script>
+        <description>Integrates with a table that lives outside of the schema</description>
+        <language>pal</language>
+        <config>alpha-ext-dataserver-process-config.kts</config>
+        <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
+    </process>
     <process name="ALPHA_EVENT_HANDLER">
         <groupId>ALPHA</groupId>
         <start>true</start>
@@ -31,7 +43,17 @@
         <script>alpha-eventhandler.kts,charlie-eventhandler.kts</script>
         <description>Handles events</description>
         <language>pal</language>
-        <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
+        <loggingLevel>INFO,DATADUMP_ON</loggingLevel>
+        <classpath>alpha-app*</classpath>
+    </process>
+    <process name="ALPHA_INTEGRATION_HANDLER">
+        <groupId>ALPHA</groupId>
+        <start>true</start>
+        <options>-Xmx512m -DRedirectStreamsToLog=true -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5105</options>
+        <module>genesis-eventhandler</module>
+        <package>global.genesis.eventhandler,mycompany</package>
+        <description>Handles events</description>
+        <loggingLevel>INFO,DATADUMP_ON</loggingLevel>
         <classpath>alpha-app*</classpath>
     </process>
     <process name="ALPHA_REQUEST_SERVER">
