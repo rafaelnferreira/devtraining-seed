@@ -10,6 +10,7 @@ import { Route } from '@microsoft/fast-router';
 import { defaultLayout, loginLayout } from '../layouts';
 import { NotFound } from './not-found/not-found';
 import { Home } from './home/home';
+import { ExternalDS } from './externalds/externalds';
 
 // eslint-disable-next-line
 declare var ENABLE_SSO: string;
@@ -71,6 +72,7 @@ export class MainRouterConfig extends FoundationRouterConfiguration<LoginSetting
         childRouters: true,
       },
       { path: 'not-found', element: NotFound, title: 'Not Found', name: 'not-found' },
+      { path: 'externalds', element: ExternalDS, title: 'External DS', name: 'externalds' },
       {
         path: 'home',
         element: Home,
