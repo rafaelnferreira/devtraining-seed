@@ -24,6 +24,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Collections;
 
+import global.genesis.aliasstore.stores.SimpleAliasStore;
 @Singleton
 @ConditionalOnProperty(property = "UpdateQueueIntegration", conditionalValue = "true")
 public class UpdateMessageListener implements MessageListener {
@@ -99,7 +100,7 @@ public class UpdateMessageListener implements MessageListener {
         updates.forEach(u -> {
 
             // ALIAS STORE MUST MATCH ON BOTH ENDS SO IT CAN BE DESERIALIZED
-            u.setAliasStore(rxDb.getAliasStore());
+            // u.setAliasStore(new SimpleAliasStore());
 
             updateQueue.publishRecordUpdate(u, null);
         });

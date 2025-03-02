@@ -25,11 +25,12 @@
     <process name="ALPHA_EXT_DATASERVER">
         <groupId>ALPHA</groupId>
         <start>true</start>
-        <options>-Xmx1024m -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5108</options>
+        <!-- skip sanity checks to avoid AliasStore and Dictionary mismatch -->
+        <options>-Xmx1024m -DSKIP_SANITY_CHECK=true -DXSD_VALIDATE=false -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5108</options>
         <module>genesis-pal-dataserver</module>
         <package>global.genesis.dataserver.pal</package>
         <script>alpha-ext-dataserver.kts</script>
-        <description>Integrates with a table that lives outside of the schema</description>
+        <description>Integrates with a table that lives outside of the application schema</description>
         <language>pal</language>
         <config>alpha-ext-dataserver-process-config.kts</config>
         <loggingLevel>DEBUG,DATADUMP_ON</loggingLevel>
